@@ -25,7 +25,7 @@ class Annonce
     private $titre;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="datetime")
      */
     private $dateMAJ;
 

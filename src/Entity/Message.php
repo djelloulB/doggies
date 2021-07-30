@@ -18,30 +18,18 @@ class Message
     private $id;
 
     /**
-     * @ORM\Column(type="float")
-     */
-    private $longueur;
-
-    /**
      * @ORM\ManyToOne(targetEntity=DamandeAdoption::class, inversedBy="messages")
      */
     private $demandeAdoption;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $text;
+
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getLongueur(): ?float
-    {
-        return $this->longueur;
-    }
-
-    public function setLongueur(float $longueur): self
-    {
-        $this->longueur = $longueur;
-
-        return $this;
     }
 
     public function getDemandeAdoption(): ?DamandeAdoption
@@ -52,6 +40,18 @@ class Message
     public function setDemandeAdoption(?DamandeAdoption $demandeAdoption): self
     {
         $this->demandeAdoption = $demandeAdoption;
+
+        return $this;
+    }
+
+    public function getText(): ?string
+    {
+        return $this->text;
+    }
+
+    public function setText(string $text): self
+    {
+        $this->text = $text;
 
         return $this;
     }

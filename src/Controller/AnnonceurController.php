@@ -6,15 +6,16 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class DefaultController extends AbstractController
+class AnnonceurController extends AbstractController
 {
     /**
-     * @Route("/default", name="index")
+     * @Route("/annonceur", name="annonceur_index")
      */
     public function index(): Response
     {
-        return $this->render('default/index.html.twig', [
-            'controller_name' => 'DefaultController',
+
+        return $this->render('annonceur/index.html.twig', [
+            'titre' => 'Dog-Corner',
         ]);
     }
 }
