@@ -3,25 +3,58 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>
-			{% block title %}Welcome!
+			{% block title %}Dog Corner
 			{% endblock %}
 		</title>
-		<!-- CSS only -->
-		<link
-		href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-		<!-- JavaScript Bundle with Popper -->
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-		{# Run `composer require symfony/webpack-encore-bundle`
-				           and uncomment the following Encore helpers to start using Symfony UX #}
+		<link href="{{ asset('style/base.css') }}" rel="stylesheet">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+		<link href="{{ asset('style/style.css') }}" rel="stylesheet">
+		<link rel="icon" href="{{ asset('img/paw.ico') }}"/>
+
 		{% block stylesheets %}
 			{#{{ encore_entry_link_tags('app') }}#}
 		{% endblock %}
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+		<script src="https://kit.fontawesome.com/35ec662076.js" crossorigin="anonymous" defer></script>
 
 		{% block javascripts %}
 			{#{{ encore_entry_script_tags('app') }}#}
 		{% endblock %}
 	</head>
 	<body>
+		{% block header %}
+			<header>
+
+				{% block nav %}
+					<nav id="navbar" class="navbar px-5 navbar-expand-lg navbar-dark">
+
+						<div class="collapse navbar-collapse justify-content-between" id="navbarNavAltMarkup">
+							<a id="logo" class="navbar-brand" href="index.php">
+								<i class="fas fa-paw"></i>
+								Dog Corner</a>
+							<div class="navbar-nav">
+								<a class="nav-link" aria-current="page" href="index.php">Accueil</a>
+								<a class="nav-link" href="index.php?page=list">Tous les Chiens</a>
+								<a class="nav-link" href="index.php?page=contact">Contact</a>
+							</div>
+							<div class="nav-bar">
+								<div class="align-top d-flex">
+									<span class="me-5"></span>
+									<div class="text-center"></div>
+								</div>
+							</div>
+						</div>
+					</nav>
+					<h1 class="text-center my-5">
+						<i class="fas fa-paw"></i>
+						{{ title }}</h1>
+
+				{% endblock %}
+			</header>
+
+
+		{% endblock %}
 		{% block body %}{% endblock %}
 	</body>
 </html>
