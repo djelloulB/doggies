@@ -15,7 +15,7 @@ class AnnonceurController extends AbstractController
     {
 
         return $this->render('annonceur/index.html.twig', [
-            'titre' => 'Dog-Corner',
+            'title' => 'Dog-Corner',
         ]);
     }
 }
