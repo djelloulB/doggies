@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des chien
+{% endblock %}
+
+{% block body %}
+	<main class="container mx-auto py-5">
+		<h2 class="text-center">Liste des chiens</h2>
+		<section class="row py-3">
+			{% for key, annonce in annonces %}
+				<div class=" px-auto col-3 py-5">
+					<div class="card shadow" style="width: 25rem;">
+						{% for dog in annonce.dogs %}
+							{% for image in dog.images %}
+								<img src="{{ asset(image.urlImage) }}" class="card-img-top" alt="...">
+							{% endfor %}
+						{% endfor %}
+						<div class="card-body">
+							<h5 class="card-title">{{annonce.titre}}</h5>
+							<p class="card-text">card title and make up the bulk of the card's content.</p>
+							<a href="http://127.0.0.1:8001/detailAnnonce" class="btn btn-dark-green">Voir plus</a>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+
+
+		</main>
+	{% endblock %}
