@@ -43,7 +43,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
     protected $motDePasse;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     protected $residence;
 
@@ -53,7 +53,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
     protected $telephone;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     protected $ville;
 
