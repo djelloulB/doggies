@@ -1,6 +1,6 @@
 @font-face {
-  font-family: "Huggable Hedgehogs";
-  src: url("../fonts/Huggable\ Hedgehogs.otf") format("OpenType");
+  font-family: 'Huggable Hedgehogs';
+  src: url('../fonts/Huggable\ Hedgehogs.otf') format('OpenType');
   font-weight: normal;
   font-style: normal;
 }
@@ -14,7 +14,7 @@ body {
       #4e812985,
       rgba(255, 255, 0, 0.192)
     ),
-    url("../img/bg-image.jpg");
+    url('../img/bg-image.jpg');
   background-position: center;
   padding-bottom: 50px !important;
   color: #fff;
@@ -32,10 +32,10 @@ body {
 }
 h1,
 h2 {
-  font-family: "Huggable Hedgehogs";
+  font-family: 'Huggable Hedgehogs';
 }
 #logo {
-  font-family: "Huggable Hedgehogs";
+  font-family: 'Huggable Hedgehogs';
 }
 h2 {
   font-size: 2.5em;
@@ -71,7 +71,7 @@ header .btn-green:hover {
 
 header .btn-green:hover:after {
   /*chevron >> */
-  content: "\00bb";
+  content: '\00bb';
   /* content: "\203A"; chevron > */
   position: absolute;
   opacity: 1;
@@ -105,7 +105,7 @@ header .btn-green:hover:after {
 }
 
 .btn-dark-green:hover::after {
-  content: "\00bb";
+  content: '\00bb';
   /* content: "\203A"; chevron > */
   position: absolute;
   opacity: 1;
