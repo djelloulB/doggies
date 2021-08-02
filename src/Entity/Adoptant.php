@@ -46,4 +46,15 @@ class Adoptant extends Utilisateur
 
         return $this;
     }
+
+    /**
+     * @see UserInterface
+     */
+    public function getRoles(): array
+    {
+        //guarantee every utilisateur at least has ROLE_USER
+        $roles[] = 'ROLE_ADOPTANT';
+
+        return array_unique($roles);
+    }
 }

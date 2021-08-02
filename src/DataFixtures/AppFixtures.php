@@ -14,9 +14,15 @@ use App\Entity\Image;
 use App\Entity\Message;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class AppFixtures extends Fixture
 {
+    public function __construct(UserPasswordHasherInterface $passwordHasher)
+    {
+        $this->passwordHasher = $passwordHasher;
+    }
+
     public function load(ObjectManager $manager)
     {
         ////////////ADOPTANT////////////
@@ -26,13 +32,15 @@ class AppFixtures extends Fixture
             $adoptant = new Adoptant();
             $adoptant->setNom('nom '.$i);
             $adoptant->setPrenom('prenom '.$i);
-            $adoptant->setEmail('email '.$i);
             $adoptant->setTelephone('telephone '.$i);
             $adoptant->setVille('ville '.$i);
             $adoptant->setDepartement('departement '.$i);
             $adoptant->setResidence('residence '.$i);
-            $adoptant->setEmail('email '.$i);
-            $adoptant->setMotDePasse('mdp '.$i);
+            $adoptant->setEmail('email'.$i.'@gmail.com');
+
+            $mdp = $this->passwordHasher->hashPassword($adoptant, 'mdp'.$i);
+            $adoptant->setMotDePasse($mdp);
+
             $manager->persist($adoptant);
             $adoptants[$i] = $adoptant;
         }
@@ -119,18 +127,20 @@ class AppFixtures extends Fixture
         ////////////ANNONCEUR////////////
 
         $annonceurs = [];
-        for ($i = 0; $i < 20; $i++) {
+        for ($i = 20; $i < 40; $i++) {
             $annonceur = new Annonceur();
-            $annonceur->addAnnonce($annonces[$i]);
+            $annonceur->addAnnonce($annonces[$i-20]);
             $annonceur->setNom('nom '.$i);
             $annonceur->setPrenom('prenom '.$i);
-            $annonceur->setEmail('email '.$i);
             $annonceur->setTelephone('telephone '.$i);
             $annonceur->setVille('ville '.$i);
             $annonceur->setDepartement('departement '.$i);
             $annonceur->setResidence('residence '.$i);
-            $annonceur->setEmail('email '.$i);
-            $annonceur->setMotDePasse('mdp '.$i);
+            $annonceur->setEmail('email'.$i.'@gmail.com');
+
+            $mdp = $this->passwordHasher->hashPassword($annonceur, 'mdp'.$i);
+            $annonceur->setMotDePasse($mdp);
+
             $manager->persist($annonceur);
             $annonceurs[$i] = $annonceur;
         }
@@ -141,7 +151,7 @@ class AppFixtures extends Fixture
         $categories = [];
         for ($i = 0; $i < 20; $i++) {
             $categorie = new Categorie();
-            $categorie->addAnnonceur($annonceurs[$i]);
+            $categorie->addAnnonceur($annonceurs[$i+20]);
             $categorie->setDesignation('designation '.$i);
             $manager->persist($categorie);
             $categories[$i] = $categorie;
@@ -151,17 +161,19 @@ class AppFixtures extends Fixture
         ////////////ADMIN////////////
 
 
-        for ($i = 0; $i < 20; $i++) {
+        for ($i = 40; $i < 60; $i++) {
             $admin = new Admin();
             $admin->setNom('nom '.$i);
             $admin->setPrenom('prenom '.$i);
-            $admin->setEmail('email '.$i);
             $admin->setTelephone('telephone '.$i);
             $admin->setVille('ville '.$i);
             $admin->setDepartement('departement '.$i);
             $admin->setResidence('residence '.$i);
-            $admin->setEmail('email '.$i);
-            $admin->setMotDePasse('mdp '.$i);
+            $admin->setEmail('email'.$i.'@gmail.com');
+
+            $mdp = $this->passwordHasher->hashPassword($admin, 'mdp'.$i);
+            $admin->setMotDePasse($mdp);
+            
             $manager->persist($admin);
         }
         $manager->flush();

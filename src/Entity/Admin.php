@@ -10,4 +10,14 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Admin extends Utilisateur
 {
+    /**
+     * @see UserInterface
+     */
+    public function getRoles(): array
+    {
+        //guarantee every utilisateur at least has ROLE_USER
+        $roles[] = 'ROLE_ADMIN';
+
+        return array_unique($roles);
+    }
 }
