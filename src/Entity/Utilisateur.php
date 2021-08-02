@@ -41,7 +41,7 @@ use Doctrine\ORM\Mapping as ORM;
     protected $motDePasse;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     protected $residence;
 
@@ -51,7 +51,7 @@ use Doctrine\ORM\Mapping as ORM;
     protected $telephone;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     protected $ville;
 
