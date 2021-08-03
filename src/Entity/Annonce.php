@@ -6,6 +6,7 @@ use App\Repository\AnnonceRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=AnnonceRepository::class)
@@ -21,16 +22,26 @@ class Annonce
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $titre;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Assert\DateTime(
+     *      message="Date au mauvais format"
+     * )
      */
     private $dateMAJ;
 
     /**
      * @ORM\OneToMany(targetEntity=Dog::class, mappedBy="annonce")
+     * @Assert\Count(
+     *      min = 1,
+     *      max = 5,
+     *      minMessage = "You must specify at least one email",
+     *      maxMessage = "You cannot specify more than {{ limit }} emails"
+     * )
      */
     private $dogs;
 

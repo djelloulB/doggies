@@ -6,6 +6,7 @@ use App\Repository\DogRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=DogRepository::class)
@@ -36,6 +37,11 @@ class Dog
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Length(
+     *min = 50,
+     *max = 255,
+     *minMessage = "Your first name must be at least {{ limit }} characters long",
+     *maxMessage = "Your first name cannot be longer than {{ limit }} characters")
      */
     private $antecedents;
 
@@ -46,6 +52,11 @@ class Dog
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Length(
+     *min = 50,
+     *max = 255,
+     *minMessage = "Your first name must be at least {{ limit }} characters long",
+     *maxMessage = "Your first name cannot be longer than {{ limit }} characters")
      */
     private $description;
 
