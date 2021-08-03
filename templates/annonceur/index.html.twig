@@ -5,9 +5,9 @@
 
 {% block body %}
 
-	<h1 class="text-center mt-5">
+	<h1 class="text-center my-5">
 		Mes Annonces :</h1>
-	<div class="container mt-5">
+	<section class="py-5">
 		<div class="row justify-content-center mx-auto">
 			<div class="col-sm-12 col-md-6 col-lg-3 col-3 mx-auto mt-2">
 				<div class=" card " style=" width: 18rem;">
@@ -40,30 +40,29 @@
 				</div>
 			</div>
 			<div class="col-sm-12 col-md-6 col-lg-3 col-3 mx-auto mt-2">
-				<div class=" card" style=" width: 18rem;">
-					<img class="card-img-top" src="https://images.unsplash.com/photo-1613256168695-b13ed5ba9500?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" alt="Card image cap">
-					<div class="card-body">
-						<h5 class="card-title">Ajouter Annonce</h5>
-						<p class="card-text">
-							Ajouter une annonce.</p>
-						<a href="#" class="btn btn-dark-green">Créer Annonce</a>
-					</div>
-				</div>
+
+
+				<a class="align-middle " href="annonce-formulaire">
+					<i class="fas fa-plus-circle"></i>
+				</a>
+
+
 			</div>
 		</div>
-
+	</section>
+	<section class="py-5">
 		<h1 class="text-center mt-5">
 			Mes Messages :</h1>
 
 		<div>
-			<table class="table table-striped mt-5">
+			<table id="msg-table" class="table table-striped mt-5">
 				<thead>
 					<tr>
-						<th scope="col"></th>
+						<th scope="col">#</th>
 						<th scope="col">Message</th>
 						<th scope="col">repondu/non repondu</th>
-						<th scope="col">repondre</th>
-						<th scope="col">Supprimer</th>
+						<th class="text-center" scope="col">Action</th>
+						<th></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -73,9 +72,12 @@
 						<td>Oui</td>
 						<td>
 							<button type="button" class="btn btn-dark-green">Repondre</button>
+
 						</td>
 						<td>
-							<button type="button" class="btn btn-dark-green">Supprimer</button>
+							<button type="button" class="btn btn-danger">
+								<i class="far fa-trash-alt"></i>
+							</button>
 						</td>
 					</tr>
 					<tr>
@@ -86,7 +88,9 @@
 							<button type="button" class="btn btn-dark-green">Repondre</button>
 						</td>
 						<td>
-							<button type="button" class="btn btn-dark-green">Supprimer</button>
+							<button type="button" class="btn btn-danger">
+								<i class="far fa-trash-alt"></i>
+							</button>
 						</td>
 					</tr>
 					<tr>
@@ -97,20 +101,12 @@
 							<button type="button" class="btn btn-dark-green">Repondre</button>
 						</td>
 						<td>
-							<button type="button" class="btn btn-dark-green">Supprimer</button>
+							<button type="button" class="btn btn-danger">
+								<i class="far fa-trash-alt"></i>
+							</button>
 						</td>
 					</tr>
-					<tr>
-						<th scope="row">4</th>
-						<td>Patrick</td>
-						<td>Non</td>
-						<td>
-							<button type="button" class="btn btn-dark-green">Repondre</button>
-						</td>
-						<td>
-							<button type="button" class="btn btn-dark-green">Supprimer</button>
-						</td>
-					</tr>
+
 					<tr>
 						<th scope="row">5</th>
 						<td>Antoine</td>
@@ -119,12 +115,13 @@
 							<button type="button" class="btn btn-dark-green">Repondre</button>
 						</td>
 						<td>
-							<button type="button" class="btn btn-dark-green">Supprimer</button>
+							<button type="button" class="btn btn-danger">
+								<i class="far fa-trash-alt"></i>
+							</button>
 						</td>
 					</tr>
 				</tbody>
 			</table>
-
 		</div>
-	</div>
+	</section>
 {% endblock %}
