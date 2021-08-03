@@ -32,18 +32,41 @@
 					<nav id="navbar" class="navbar px-5 navbar-expand-lg navbar-dark">
 
 						<div class="collapse navbar-collapse justify-content-between" id="navbarNavAltMarkup">
-							<a id="logo" class="navbar-brand" href="index.php">
+							<a id="logo" class="navbar-brand" href="/">
 								<i class="fas fa-paw"></i>
 								Dog Corner</a>
 							<div class="navbar-nav">
 								<a class="nav-link" aria-current="page" href="index.php">Accueil</a>
-								<a class="nav-link" href="index.php?page=list">Tous les Chiens</a>
-								<a class="nav-link" href="index.php?page=contact">Contact</a>
+								<a class="nav-link" href="list">Tous les Chiens</a>
+								<a class="nav-link" href="contact">Contact</a>
+								{% if is_granted('ROLE_ANNONCEUR') %}
+									<a href="annonceur" class=" nav-link" aria-current="page">Mes annonces
+
+									</a>
+									<div class="mx-5 start-end">
+										<a href="annonce-formulaire" class=" btn btn-success active" aria-current="page">Créer une annonce
+											<i class="fas fa-plus"></i>
+										</a>
+									</div>
+								{% endif %}
+
+
 							</div>
 							<div class="nav-bar">
 								<div class="align-top d-flex">
 									<span class="me-5"></span>
-									<div class="text-center"></div>
+									<div class="text-center">
+										{% if not app.user %}
+											<a href="{{path('app_login')}}" class="p-0 mx-2 nav-link">
+												<i class="fas fa-user"></i><br>S 'identifier
+											</a>
+										{% else %}
+											<a href="{{path('app_logout')}}" class="p-0 nav-link">
+												<i class="fas fa-sign-out-alt"></i>
+												<br>Se déconnecteur
+											</a>
+										{% endif %}
+									</div>
 								</div>
 							</div>
 						</div>
@@ -57,6 +80,8 @@
 
 
 		{% endblock %}
-		{% block body %}{% endblock %}
-	</body>
-</html>
+		<main class="container mx-auto py-5"> {% block body %}{% endblock %}
+			</main>
+		</body>
+	</html>
+</body></html>

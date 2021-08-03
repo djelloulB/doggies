@@ -2,6 +2,8 @@
 
 namespace App\Security;
 
+use App\Entity\Admin;
+use App\Entity\Annonceur;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -49,7 +51,12 @@ class AppCustomAuthenticator extends AbstractLoginFormAuthenticator
         if ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) {
             return new RedirectResponse($targetPath);
         }
-
+        if($token->getUser() instanceof Admin){
+            return new RedirectResponse($this->urlGenerator->generate('admin_dashboard'));
+        }
+        if ($token->getUser() instanceof Annonceur){
+            return new RedirectResponse($this->urlGenerator->generate('annonceur_index'));
+        }
         // For example:
         return new RedirectResponse($this->urlGenerator->generate('home_index'));
     }

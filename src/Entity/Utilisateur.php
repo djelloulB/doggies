@@ -42,6 +42,12 @@ use Symfony\Component\Security\Core\User\UserInterface;
      */
     protected $motDePasse;
 
+     /**
+     * @var string|null
+     */
+    protected $plainPassword;
+
+
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
@@ -208,6 +214,30 @@ use Symfony\Component\Security\Core\User\UserInterface;
     public function eraseCredentials()
     {
         // If you store any temporary, sensitive data on the user, clear it here
-        // $this->plainPassword = null;
+        $this->plainPassword = null;
+    }
+
+    /**
+     * Get the value of plainPassword
+     *
+     * @return  string|null
+     */ 
+    public function getPlainPassword()
+    {
+        return $this->plainPassword;
+    }
+
+    /**
+     * Set the value of plainPassword
+     *
+     * @param  string|null  $plainPassword
+     *
+     * @return  self
+     */ 
+    public function setPlainPassword($plainPassword)
+    {
+        $this->plainPassword = $plainPassword;
+
+        return $this;
     }
 }

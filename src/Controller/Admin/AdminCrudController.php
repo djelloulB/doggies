@@ -22,9 +22,8 @@ class AdminCrudController extends AbstractCrudController
             TextField::new('nom'),
             TextField::new('prenom'),
             TextField::new('email'),
-            TextField::new('motDePasse'),
-            TextField::new('telephone'),
-            
+            TextField::new('plainPassword')->hideOnIndex(),
+            TextField::new('telephone'),            
         ];
     }
 

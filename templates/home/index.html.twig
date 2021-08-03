@@ -8,7 +8,7 @@
 		{% endblock %}
 		<p class="">Chien pas cher sert à tout faire</p>
 		<div class="btn-group pb-5 mb-5">
-			<a href="#" class="btn btn-green">
+			<a href="list" class="btn btn-green">
 				<span>Trouver votre chien</span>
 			</a>
 		</div>
@@ -17,56 +17,55 @@
 {% endblock %}
 
 {% block body %}
-	<main class="container mx-auto py-5">
-		<h2 class="text-center">Dernier chiens ajoutés</h2>
-		<section class="row py-3">
-			{% for key, annonce in annonces %}
-				<div class=" px-auto col-3 py-5">
-					<div class="card shadow" style="width: 25rem;">
-						{% for dog in annonce.dogs %}
-							{% for image in dog.images %}
-								<img src="{{ asset(image.urlImage) }}" class="card-img-top" alt="...">
-							{% endfor %}
+
+	<h2 class="text-center">Dernier chiens ajoutés</h2>
+	<section class="row py-3">
+		{% for key, annonce in annonces %}
+			<div class=" px-auto col-3 py-5">
+				<div class="card shadow" style="width: 25rem;">
+					{% for dog in annonce.dogs %}
+						{% for image in dog.images %}
+							<img src="{{ asset(image.urlImage) }}" class="card-img-top" alt="...">
 						{% endfor %}
-						<div class="card-body">
-							<h5 class="card-title">{{annonce.titre}}</h5>
-							<p class="card-text">card title and make up the bulk of the card's content.</p>
-							<a href="#" class="btn btn-dark-green">Voir plus</a>
+					{% endfor %}
+					<div class="card-body">
+						<h5 class="card-title">{{annonce.titre}}</h5>
+						<p class="card-text">card title and make up the bulk of the card's content.</p>
+						<a href="detailAnnonce" class="btn btn-dark-green">Voir plus</a>
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+		<a class="" href="list">Voir tous les chiens</a>
+
+	</section>
+	<section class="py-5">
+		<h2 class="text-center mb-5">Nos partenaires eleveurs et associations</h2>
+		<div class="row mx-auto">
+			{% for key, annonce in annonces %}
+				<div class="card my-3 ">
+					<div class="row g-0">
+						<div class="col-md-4">
+							{% for dog in annonce.dogs %}
+								{% for image in dog.images %}
+									<img src="{{ asset(image.urlImage) }}" class="img-fluid rounded-start" alt="...">
+								{% endfor %}
+							{% endfor %}
+						</div>
+						<div class="col-md-8">
+							<div class="card-body">
+								<h5 class="card-title">Card title</h5>
+								<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+								<p class="card-text">
+									<small class="text-muted">Last updated 3 mins ago</small>
+								</p>
+							</div>
 						</div>
 					</div>
 				</div>
 			{% endfor %}
-			<a class="" href="#">Voir tous les chiens</a>
-
-		</section>
-		<section class="py-5">
-			<h2 class="text-center mb-5">Nos partenaires eleveurs et associations</h2>
-			<div class="row mx-auto">
-				{% for key, annonce in annonces %}
-					<div class="card my-3 ">
-						<div class="row g-0">
-							<div class="col-md-4">
-								{% for dog in annonce.dogs %}
-									{% for image in dog.images %}
-										<img src="{{ asset(image.urlImage) }}" class="img-fluid rounded-start" alt="...">
-									{% endfor %}
-								{% endfor %}
-							</div>
-							<div class="col-md-8">
-								<div class="card-body">
-									<h5 class="card-title">Card title</h5>
-									<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-									<p class="card-text">
-										<small class="text-muted">Last updated 3 mins ago</small>
-									</p>
-								</div>
-							</div>
-						</div>
-					</div>
-				{% endfor %}
-			</div>
-		</section>
+		</div>
+	</section>
 
 
-	</main>
 {% endblock %}
