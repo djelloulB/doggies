@@ -19,7 +19,7 @@
 {% block body %}
 
 	<h2 class="text-center">Dernier chiens ajoutés</h2>
-	<section class="row py-3">
+	<section class="row py-3 mb-5">
 		{% for key, annonce in annonces %}
 			<div class=" px-auto col-3 py-5">
 				<div class="card shadow" style="width: 25rem;">
@@ -36,9 +36,11 @@
 				</div>
 			</div>
 		{% endfor %}
-		<a class="" href="list">Voir tous les chiens</a>
+		<a class="" href="list">Voir tous les chiens >>
+		</a>
 
 	</section>
+	<hr>
 	<section class="py-5">
 		<h2 class="text-center mb-5">Nos partenaires eleveurs et associations</h2>
 		<div class="row mx-auto">
