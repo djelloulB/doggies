@@ -27,153 +27,183 @@ class AppFixtures extends Fixture
     {
         ////////////ADOPTANT////////////
 
-        $adoptants = [];
-        for ($i = 0; $i < 20; $i++) {
-            $adoptant = new Adoptant();
-            $adoptant->setNom('nom '.$i);
-            $adoptant->setPrenom('prenom '.$i);
-            $adoptant->setTelephone('telephone '.$i);
-            $adoptant->setVille('ville '.$i);
-            $adoptant->setDepartement('departement '.$i);
-            $adoptant->setResidence('residence '.$i);
-            $adoptant->setEmail('email'.$i.'@gmail.com');
+        // $adoptants = [];
+        // for ($i = 0; $i < 20; $i++) {
+        //     $adoptant = new Adoptant();
+        //     $adoptant->setNom('nom '.$i);
+        //     $adoptant->setPrenom('prenom '.$i);
+        //     $adoptant->setTelephone('telephone '.$i);
+        //     $adoptant->setVille('ville '.$i);
+        //     $adoptant->setDepartement('departement '.$i);
+        //     $adoptant->setResidence('residence '.$i);
+        //     $adoptant->setEmail('email'.$i.'@gmail.com');
 
-            $mdp = $this->passwordHasher->hashPassword($adoptant, 'mdp'.$i);
-            $adoptant->setMotDePasse($mdp);
+        //     $mdp = $this->passwordHasher->hashPassword($adoptant, 'mdp'.$i);
+        //     $adoptant->setMotDePasse($mdp);
 
-            $manager->persist($adoptant);
-            $adoptants[$i] = $adoptant;
-        }
+        //     $manager->persist($adoptant);
+        //     $adoptants[$i] = $adoptant;
+        // }
 
         ////////////MESSAGE////////////
 
-        $messages = [];
-        for ($i = 0; $i < 20; $i++) {
-            $message = new Message();
-            $message->setText('text '.$i);
-            $manager->persist($message);
-            $messages[$i] = $message;
-        }
+        // $messages = [];
+        // for ($i = 0; $i < 20; $i++) {
+        //     $message = new Message();
+        //     $message->setText('text '.$i);
+        //     $manager->persist($message);
+        //     $messages[$i] = $message;
+        // }
 
         ////////////DEMANDE ADOPTION////////////
 
-        $damandeAdoptions = [];
-        for ($i = 0; $i < 20; $i++) {
-            $damandeAdoption = new DamandeAdoption();
-            $damandeAdoption->addAdoptant($adoptants[$i]);
-            $damandeAdoption->addMessage($messages[$i]);
-            $manager->persist($damandeAdoption);
-            $damandeAdoptions[$i] = $damandeAdoption;
-        }
+        // $damandeAdoptions = [];
+        // for ($i = 0; $i < 20; $i++) {
+        //     $damandeAdoption = new DamandeAdoption();
+        //     $damandeAdoption->addAdoptant($adoptants[$i]);
+        //     $damandeAdoption->addMessage($messages[$i]);
+        //     $manager->persist($damandeAdoption);
+        //     $damandeAdoptions[$i] = $damandeAdoption;
+        // }
 
-        ////////////BREED////////////
+        // ////////////BREED////////////
 
-        $breeds = [];
-        for ($i = 0; $i < 20; $i++) {
-            $breed = new Breed();
-            $breed->setNom('nom '.$i);
-            $manager->persist($breed);
-            $breeds[$i] = $breed;
-        }
+        // $breeds = [];
+        // for ($i = 0; $i < 20; $i++) {
+        //     $breed = new Breed();
+        //     $breed->setNom('nom '.$i);
+        //     $manager->persist($breed);
+        //     $breeds[$i] = $breed;
+        // }
 
+
+            ////////////BREED////////////
+            $bs = [];
+            $breeds = ['Labrador', 'Golden Retriever', 'Berger Allemand', 'Cavalier King Charles', 'Beagle', 'Husky de Sibérie', 'Teckel', 'Bouvier Bernois', 'Jack Russell', 'Berger Blanc Suisse', 'Shih Tzu', 'Saint-Bernard', 'Malamute de Alaska'];
+            foreach ($breeds as $b) {
+                $breed = new Breed();
+                $breed->setNom($b);
+                $manager->persist($breed);
+                $bs[] = $breed;
+            }
 
         ////////////IMAGE////////////
-
-        $images = [];
-        for ($i = 0; $i < 20; $i++) {
-            $image = new Image();
-            $image->setUrlImage('url '.$i);
-            $manager->persist($image);
-            $images[] = $image;
-        }
-
+        $img = [];
+        $images = [
+            ['img\Arturo\43951_h300.jpg','img\Arturo\43956_h300.jpg','img\Arturo\43957_h300.jpg','img\Arturo\143960_w900h722cx294cy189.jpg','img\Arturo\arthuro.jpg'],
+            ['img\BLAZE\443776_0.jpg','img\BLAZE\443776_1.jpg','img\BLAZE\443776_2.jpg','img\BLAZE\443776_3.jpg','img\BLAZE\443776_4.jpg'],['img\LORD GASPARD II\507184_0.jpg','img\LORD GASPARD II\507184_1.jpg','img\LORD GASPARD II\507184_2.jpg','img\LORD GASPARD II\507184_3.jpg','img\LORD GASPARD II\507184_4.jpg'],
+            ['img\MAX\505833_0.jpg','img\MAX\505833_1.jpg','img\MAX\505833_2.jpg','img\MAX\505833_3.jpg','img\MAX\505833_4.jpg'],
+            ['img\POUIK\507364_0.jpg','img\POUIK\507364_1.jpg','img\POUIK\507364_2.jpg','img\POUIK\507364_3.jpg','img\POUIK\507364.jpg'],
+            ['img\PYPPERS\507330_0.jpg','img\PYPPERS\507330_1.jpg','img\PYPPERS\507330_2.jpg','img\PYPPERS\507330_3.jpg','img\PYPPERS\507330_4.jpg'],
+            ['img\SAYA\274263_0.jpg','img\SAYA\274263_3.jpg','img\SAYA\274263_4.jpg','img\SAYA\274263_5.jpg','img\SAYA\274263_6.jpg'],
+            ['img\SHIPER\485110_0.jpg','img\SHIPER\485110_1.jpg','img\SHIPER\485110_2.jpg','img\SHIPER\485110_3.jpg','img\SHIPER\485110.jpg']
+        ];
+        // foreach ($images as $imgs) {
+        //     foreach ($imgs as $i) {
+        //         $image = new Image();
+        //         $image->setUrlImage($i);
+        //         $manager->persist($image);
+        //         $img[] = $image;
+        //     }
+        // }
 
         ////////////DOGS////////////
-        $dogs = [];
-        for ($i = 0; $i < 20; $i++) {
+        $do = [];
+        $dogs = [[$bs[0],'Patrick','A eu la galle','Contrairement à ce que son nom pourrait laisser entendre, le Berger australien n’est pas originaire d’Australie, mais du Pays basque.',false, true, true],
+
+        [$bs[1],'Robert','Pas vacciné','Les ancêtres du Beagle étaient présents en Grèce antique comme l’attestent plusieurs sources. Les historiens supposent que ces chiens courants ont ensuite été importés par les Romains au moment de la conquête de l’Angleterre.',false, true, false],
+
+        [$bs[2],'Gerard','non castré','Le Malamute de l’Alaska, plus simplement appelé Malamute, est un chien de traîneau aux origines anciennes, utilisé depuis très longtemps par la tribu inuit des Mahlemiuts, à qui il doit son nom',false, true, true],
+
+        [$bs[3],'Alfred','Puces frequentes','Le Cavalier King Charles Spaniel est un petit épagneul originaire d’Angleterre. Ses origines sont anciennes : son ancêtre, le King Charles Spaniel était l’animal de prédilection du roi Charles II d’Angleterre, au XVIIe siècle, d’où son nom',false, true, true],
+
+        [$bs[4],'George','A eu un accident','Le Berger allemand a vu le jour en Allemagne à la fin du XIXe siècle. La paternité de la race est attribuée à Marc Emil Frederic von Stephanitz.',false, true, false]];
+        foreach ($dogs as $key => $d) {
             $dog = new Dog();
-            $dog->addBreed($breeds[$i]);
-            // $dog->setAnnonce($annonces[$i]);
-            $dog->addImage($images[$i]);
-            $dog->setNom('nom '.$i);
-            $dog->setAntecedents('antecedents '.$i);
-            $dog->setDescription('description '.$i);
-            $dog->setEstAdopte($i % 2 == 0);
-            $dog->setEstTolerant($i % 2 == 0);
-            $dog->setIfLof($i % 2 == 0);
+            $dog->addBreed($d[0]);
+            $imagesForDog = $images[$key];
+            foreach ($imagesForDog as $imageForDog) {
+                $image = new Image();
+                $image->setUrlImage($imageForDog);
+                $manager->persist($image);
+                $img[] = $image;
+                $dog->addImage($image);
+            }
+            $dog->setNom($d[1]);
+            $dog->setAntecedents($d[2]);
+            $dog->setDescription($d[3]);
+            $dog->setEstAdopte($d[4]);
+            $dog->setEstTolerant($d[5]);
+            $dog->setIfLof($d[6]);
             $manager->persist($dog);
-            $dogs[] = $dog;
+            $do[] = $dog;
         }
-
-
         ////////////ANNONCES////////////
 
-        $annonces = [];
-        for ($i = 0; $i < 20; $i++) {
+        $annon = [];
+        $annonces = [[$do[0],'Annonce1',new \DateTime("now")],
+        [$do[1],'Annonce2',new \DateTime("now")],
+        [$do[2],'Annonce3',new \DateTime("now")],
+        [$do[3],'Annonce4',new \DateTime("now")],
+        [$do[4],'Annonce5',new \DateTime("now")]];
+        foreach ($annonces as $ann) {
             $annonce = new Annonce();
-            // for ($j = 0; $j <= mt_rand(1, 3); $j++) {
-                // $number = mt_rand(0, 19);
-                // $dog = $dogs[$number];
-                $annonce->addDog($dogs[$i]);
-                $annonce->addDamandeAdoption($damandeAdoptions[$i]);
-            // }
-            $annonce->setTitre('titre '.$i);
+            $annonce->addDog($ann[0]);
+            $annonce->setTitre($ann[1]);
             $annonce->setDateMAJ(new \DateTime("now"));
             $manager->persist($annonce);
-
-            $annonces[$i] = $annonce;
+            $annon[] = $annonce;
         }
 
         ////////////ANNONCEUR////////////
 
         $annonceurs = [];
-        for ($i = 20; $i < 40; $i++) {
-            $annonceur = new Annonceur();
-            $annonceur->addAnnonce($annonces[$i-20]);
-            $annonceur->setNom('nom '.$i);
-            $annonceur->setPrenom('prenom '.$i);
-            $annonceur->setTelephone('telephone '.$i);
-            $annonceur->setVille('ville '.$i);
-            $annonceur->setDepartement('departement '.$i);
-            $annonceur->setResidence('residence '.$i);
-            $annonceur->setEmail('email'.$i.'@gmail.com');
-
-            $mdp = $this->passwordHasher->hashPassword($annonceur, 'mdp'.$i);
-            $annonceur->setMotDePasse($mdp);
-
-            $manager->persist($annonceur);
-            $annonceurs[$i] = $annonceur;
+        $annonceur = new Annonceur();
+        foreach($annon as $ann) {
+            $annonceur->addAnnonce($ann);
         }
+        $annonceur->setNom('spa');
+        $annonceur->setPrenom('spa');
+        $annonceur->setTelephone('0686822860');
+        $annonceur->setVille('Marseille ');
+        $annonceur->setDepartement('13 ');
+        $annonceur->setResidence('les palmiers ');
+        $annonceur->setEmail('email@gmail.com');
 
+        $mdp = $this->passwordHasher->hashPassword($annonceur, '123');
+        $annonceur->setMotDePasse($mdp);
+
+        $manager->persist($annonceur);
+        $annonceurs[] = $annonceur;
 
         ////////////CATEGORIE////////////
 
-        $categories = [];
-        for ($i = 0; $i < 20; $i++) {
+        $catego = [];
+        $categories = [[$annonceurs[0], 'désignation c pk deja']];
+        foreach ($categories as $cate) {
             $categorie = new Categorie();
-            $categorie->addAnnonceur($annonceurs[$i+20]);
-            $categorie->setDesignation('designation '.$i);
+            $categorie->addAnnonceur($cate[0]);
+            $categorie->setDesignation($cate[1]);
             $manager->persist($categorie);
-            $categories[$i] = $categorie;
+            $catego[] = $categorie;
         }
-
 
         ////////////ADMIN////////////
 
-
-        for ($i = 40; $i < 60; $i++) {
+            $ad = [];
+            $admins = [['Melanger','Antoine','0686822860','Aix-en-Provence','Bouche du Rhone','les palmiers','antoine.melanger@laposte.net','123'],['Derieux','Yannick','0472392832','Oullins','Rhône','Irini','yderieux@stagiaire-humanbooster.com','123'],['Berabez','Djelloul','0426303122','Beni Djellil','bejaia','village beni djellil','djelloul.be@gmail.com','123']
+        ];
+            foreach ($admins as $a) {
             $admin = new Admin();
-            $admin->setNom('nom '.$i);
-            $admin->setPrenom('prenom '.$i);
-            $admin->setTelephone('telephone '.$i);
-            $admin->setVille('ville '.$i);
-            $admin->setDepartement('departement '.$i);
-            $admin->setResidence('residence '.$i);
-            $admin->setEmail('email'.$i.'@gmail.com');
-
-            $mdp = $this->passwordHasher->hashPassword($admin, 'mdp'.$i);
+            $admin->setNom($a[0]);
+            $admin->setPrenom($a[1]);
+            $admin->setTelephone($a[2]);
+            $admin->setVille($a[3]);
+            $admin->setDepartement($a[4]);
+            $admin->setResidence($a[5]);
+            $admin->setEmail($a[6]);
+            $mdp = $this->passwordHasher->hashPassword($admin,$a[7]);
             $admin->setMotDePasse($mdp);
-            
             $manager->persist($admin);
         }
         $manager->flush();
