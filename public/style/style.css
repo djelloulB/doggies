@@ -126,3 +126,27 @@ header .btn-green:hover:after {
   font-size: 5em;
   color: #97a23b;
 }
+.link-span {
+  font-size: 0.8em;
+}
+
+.nav-link {
+  color: #343a1a !important;
+}
+.nav-link:hover {
+  color: #f7f0f5 !important;
+}
+
+.add-btn {
+  background-color: #343a1a;
+  border-color: #343a1a;
+  padding: 8px 15px;
+  font-size: 0.8em;
+  color: #f7f0f5 !important;
+}
+.add-btn:hover {
+  background-color: #596d03;
+  border-color: #596d03;
+  color: #f7f0f5 !important;
+  transition: 0.2s ease-out;
+}
