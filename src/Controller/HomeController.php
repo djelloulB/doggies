@@ -10,6 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Dog;
 use App\Entity\Image;
 use App\Entity\Annonce;
+use App\Entity\Annonceur;
 
 class HomeController extends AbstractController
 {
@@ -41,10 +42,19 @@ class HomeController extends AbstractController
             $annonce->addDog($dogs[$i]);
             $Annonces[] = $annonce;
         }
+        $Annonceurs = [];
+        $annonceur = new Annonceur();
+        $annonceur->setNom('Jean');
+        $annonceur->setPrenom('Michel');
+        $annonceur->setMotDePasse('123');
+        $annonceur->setEmail('jm@fr.fr');
+        $annonceur->setTelephone('0620103000');
+        $Annonceurs[] = $annonceur;
 
         return $this->render('home/index.html.twig', [
             'title' => 'Dog Corner',
             'annonces' => $Annonces,
+            'annonceurs' => $Annonceurs,
         ]);
     }
 }

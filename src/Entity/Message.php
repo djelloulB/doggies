@@ -18,7 +18,7 @@ class Message
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity=DamandeAdoption::class, inversedBy="messages")
+     * @ORM\ManyToOne(targetEntity=DemandeAdoption::class, inversedBy="messages")
      */
     private $demandeAdoption;
 
@@ -32,12 +32,12 @@ class Message
         return $this->id;
     }
 
-    public function getDemandeAdoption(): ?DamandeAdoption
+    public function getDemandeAdoption(): ?DemandeAdoption
     {
         return $this->demandeAdoption;
     }
 
-    public function setDemandeAdoption(?DamandeAdoption $demandeAdoption): self
+    public function setDemandeAdoption(?DemandeAdoption $demandeAdoption): self
     {
         $this->demandeAdoption = $demandeAdoption;
 

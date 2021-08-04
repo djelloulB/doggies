@@ -9,7 +9,7 @@ use App\Entity\Annonce;
 use App\Entity\Annonceur;
 use App\Entity\Breed;
 use App\Entity\Categorie;
-use App\Entity\DamandeAdoption;
+use App\Entity\DemandeAdoption;
 use App\Entity\Image;
 use App\Entity\Message;
 use Doctrine\Bundle\FixturesBundle\Fixture;
@@ -57,13 +57,13 @@ class AppFixtures extends Fixture
 
         ////////////DEMANDE ADOPTION////////////
 
-        // $damandeAdoptions = [];
+        // $demandeAdoptions = [];
         // for ($i = 0; $i < 20; $i++) {
-        //     $damandeAdoption = new DamandeAdoption();
-        //     $damandeAdoption->addAdoptant($adoptants[$i]);
-        //     $damandeAdoption->addMessage($messages[$i]);
-        //     $manager->persist($damandeAdoption);
-        //     $damandeAdoptions[$i] = $damandeAdoption;
+        //     $demandeAdoption = new DemandeAdoption();
+        //     $demandeAdoption->addAdoptant($adoptants[$i]);
+        //     $demandeAdoption->addMessage($messages[$i]);
+        //     $manager->persist($demandeAdoption);
+        //     $demandeAdoptions[$i] = $demandeAdoption;
         // }
 
         // ////////////BREED////////////

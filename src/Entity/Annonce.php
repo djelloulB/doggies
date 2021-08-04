@@ -46,9 +46,9 @@ class Annonce
     private $dogs;
 
     /**
-     * @ORM\OneToMany(targetEntity=DamandeAdoption::class, mappedBy="annonce")
+     * @ORM\OneToMany(targetEntity=DemandeAdoption::class, mappedBy="annonce")
      */
-    private $damandeAdoptions;
+    private $demandeAdoptions;
 
     /**
      * @ORM\ManyToOne(targetEntity=Annonceur::class, inversedBy="annonces")
@@ -58,7 +58,7 @@ class Annonce
     public function __construct()
     {
         $this->dogs = new ArrayCollection();
-        $this->damandeAdoptions = new ArrayCollection();
+        $this->demandeAdoptions = new ArrayCollection();
     }
 
 
@@ -122,29 +122,29 @@ class Annonce
     }
 
     /**
-     * @return Collection|DamandeAdoption[]
+     * @return Collection|DemandeAdoption[]
      */
-    public function getDamandeAdoptions(): Collection
+    public function getDemandeAdoptions(): Collection
     {
-        return $this->damandeAdoptions;
+        return $this->demandeAdoptions;
     }
 
-    public function addDamandeAdoption(DamandeAdoption $damandeAdoption): self
+    public function addDemandeAdoption(DemandeAdoption $demandeAdoption): self
     {
-        if (!$this->damandeAdoptions->contains($damandeAdoption)) {
-            $this->damandeAdoptions[] = $damandeAdoption;
-            $damandeAdoption->setAnnonce($this);
+        if (!$this->demandeAdoptions->contains($demandeAdoption)) {
+            $this->demandeAdoptions[] = $demandeAdoption;
+            $demandeAdoption->setAnnonce($this);
         }
 
         return $this;
     }
 
-    public function removeDamandeAdoption(DamandeAdoption $damandeAdoption): self
+    public function removeDemandeAdoption(DemandeAdoption $demandeAdoption): self
     {
-        if ($this->damandeAdoptions->removeElement($damandeAdoption)) {
+        if ($this->demandeAdoptions->removeElement($demandeAdoption)) {
             // set the owning side to null (unless already changed)
-            if ($damandeAdoption->getAnnonce() === $this) {
-                $damandeAdoption->setAnnonce(null);
+            if ($demandeAdoption->getAnnonce() === $this) {
+                $demandeAdoption->setAnnonce(null);
             }
         }
 

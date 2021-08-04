@@ -23,27 +23,29 @@ class AnnonceController extends AbstractController
         ]);
     }
         /**
+         * @Route("/annonce/{id}/edit", name="annonce_edit")
          * @Route("/annonce/new", name="annonce_new")
          */
-        public function new(Request $request, EntityManagerInterface $em): Response
+        public function form(Request $request, EntityManagerInterface $em, ?Annonce $annonce = null): Response
         {
-            $annonce = new Annonce();
-            $chien = new Dog();
-            $annonce->addDog($chien);
+            if (empty($annonce)) {
+                $annonce = new Annonce();
+                $chien = new Dog();
+                $annonce->addDog($chien);
+            }
             $form = $this->createForm(AnnonceType::class, $annonce, [
             ]);
 
             $form->handleRequest($request);
 
             if ($form->isSubmitted() && $form->isValid()) {
-            // On enregistre
+                // On enregistre
 
-            $annonce->setDateMAJ(new \DateTime());
+                $annonce->setDateMAJ(new \DateTime());
 
-            $em->persist($annonce);
-            $em->persist($chien);
-            $em->flush();
-            return $this->redirectToRoute('annonceur_index');
+                $em->persist($annonce);
+                $em->flush();
+                return $this->redirectToRoute('annonceur_index');
             }
 
             return $this->render('annonce/new.html.twig', [
