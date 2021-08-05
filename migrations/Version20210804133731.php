@@ -29,7 +29,6 @@ final class Version20210804133731 extends AbstractMigration
         $this->addSql('ALTER TABLE demande_adoption ADD CONSTRAINT FK_AB87FF6B8805AB2F FOREIGN KEY (annonce_id) REFERENCES annonce (id)');
         $this->addSql('DROP TABLE adoptant_damande_adoption');
         $this->addSql('DROP TABLE damande_adoption');
-        $this->addSql('ALTER TABLE message DROP FOREIGN KEY FK_B6BD307FC23B0AAB');
         $this->addSql('ALTER TABLE message ADD CONSTRAINT FK_B6BD307FC23B0AAB FOREIGN KEY (demande_adoption_id) REFERENCES demande_adoption (id)');
     }
 
