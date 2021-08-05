@@ -23,7 +23,7 @@ class AdoptantCrudController extends AbstractCrudController
             TextField::new('nom'),
             TextField::new('prenom'),
             TextField::new('email'),
-            TextField::new('motDePasse'),
+            TextField::new('plainPassword'),
             TextField::new('residence'),
             TextField::new('telephone'),
             TextField::new('ville'),

@@ -14,7 +14,7 @@ class Adoptant extends Utilisateur
 {
 
     /**
-     * @ORM\ManyToMany(targetEntity=DamandeAdoption::class, inversedBy="adoptants")
+     * @ORM\ManyToMany(targetEntity=DemandeAdoption::class, inversedBy="adoptants")
      */
     private $demandeAdoption;
 
@@ -24,14 +24,14 @@ class Adoptant extends Utilisateur
     }
 
     /**
-     * @return Collection|DamandeAdoption[]
+     * @return Collection|DemandeAdoption[]
      */
     public function getDemandeAdoption(): Collection
     {
         return $this->demandeAdoption;
     }
 
-    public function addDemandeAdoption(DamandeAdoption $demandeAdoption): self
+    public function addDemandeAdoption(DemandeAdoption $demandeAdoption): self
     {
         if (!$this->demandeAdoption->contains($demandeAdoption)) {
             $this->demandeAdoption[] = $demandeAdoption;
@@ -40,7 +40,7 @@ class Adoptant extends Utilisateur
         return $this;
     }
 
-    public function removeDemandeAdoption(DamandeAdoption $demandeAdoption): self
+    public function removeDemandeAdoption(DemandeAdoption $demandeAdoption): self
     {
         $this->demandeAdoption->removeElement($demandeAdoption);
 

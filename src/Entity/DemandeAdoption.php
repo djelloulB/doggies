@@ -2,15 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\DamandeAdoptionRepository;
+use App\Repository\DemandeAdoptionRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=DamandeAdoptionRepository::class)
+ * @ORM\Entity(repositoryClass=DemandeAdoptionRepository::class)
  */
-class DamandeAdoption
+class DemandeAdoption
 {
     /**
      * @ORM\Id
@@ -20,7 +20,7 @@ class DamandeAdoption
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Annonce::class, inversedBy="damandeAdoptions")
+     * @ORM\ManyToOne(targetEntity=Annonce::class, inversedBy="demandeAdoptions")
      */
     private $annonce;
 

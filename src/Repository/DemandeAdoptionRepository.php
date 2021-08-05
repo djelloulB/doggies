@@ -2,25 +2,25 @@
 
 namespace App\Repository;
 
-use App\Entity\DamandeAdoption;
+use App\Entity\DemandeAdoption;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method DamandeAdoption|null find($id, $lockMode = null, $lockVersion = null)
- * @method DamandeAdoption|null findOneBy(array $criteria, array $orderBy = null)
- * @method DamandeAdoption[]    findAll()
- * @method DamandeAdoption[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method DemandeAdoption|null find($id, $lockMode = null, $lockVersion = null)
+ * @method DemandeAdoption|null findOneBy(array $criteria, array $orderBy = null)
+ * @method DemandeAdoption[]    findAll()
+ * @method DemandeAdoption[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class DamandeAdoptionRepository extends ServiceEntityRepository
+class DemandeAdoptionRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, DamandeAdoption::class);
+        parent::__construct($registry, DemandeAdoption::class);
     }
 
     // /**
-    //  * @return DamandeAdoption[] Returns an array of DamandeAdoption objects
+    //  * @return DemandeAdoption[] Returns an array of DemandeAdoption objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class DamandeAdoptionRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?DamandeAdoption
+    public function findOneBySomeField($value): ?DemandeAdoption
     {
         return $this->createQueryBuilder('d')
             ->andWhere('d.exampleField = :val')
