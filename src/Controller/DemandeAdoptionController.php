@@ -27,7 +27,7 @@ class DemandeAdoptionController extends AbstractController
         $demande->addMessage(new Message());
         $demande->setAnnonce($annonce);
         $demande->addAdoptant($this->getUser());
-        $form = $this->createForm(DemandeAdoptionType::class, $demande );
+        $form = $this->createForm(DemandeAdoptionType::class, $demande);
         
         return $this->render('demande_adoption/index.html.twig', [
            
