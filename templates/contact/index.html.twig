@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+{% block title %}Page Contact
+{% endblock %}
+
+{% block body %}
+	<main class="container mx-auto py-5">
+		<h2 class="text-center">Formulaire de contact</h2>
+		{{ form_start(form, {
+			attr: {
+				class: 'shadow p-5'
+			}
+		}) }}
+		{% for message in app.flashes('success') %}
+			<div class="alert alert-success">
+				{{ message }}
+			</div>
+		{% endfor %}
+		{{form_row(form.prenom)}}
+		{{form_row(form.nom)}}
+		{{form_row(form.email)}}
+		{{form_row(form.sujet)}}
+		{{form_row(form.message, {
+			attr :{
+
+			rows: '4'
+			} 
+		})}}
+		<button type="submit" class="btn btn-dark-green">Submit</button>
+		{{form_end(form)}}
+
+	</main>
+{% endblock %}
+{# <main class="container mx-auto py-5">
+																		<h2 class="text-center">Formulaire de contact</h2>
+																		<form action="" method="post" class="shadow p-5">
+																			<div class="mb-3">
+																				<label for="subject" class="form-label">Prenom</label>
+																				<input type="text" name='prenom' class="form-control" id="prenom" required>
+																			</div>
+																			<div class="mb-3">
+																				<label for="subject" class="form-label">Nom</label>
+																				<input type="text" name='nom' class="form-control" id="nom" required>
+																			</div>
+																			<div class="mb-3">
+																				<label for="email" class="form-label">Email</label>
+																				<input type="email" name='email' class="form-control" id="email" aria-describedby="emailHelp" required>
+																				<div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+																			</div>
+																			<div class="mb-3">
+																				<label for="subject" class="form-label">Sujet</label>
+																				<input type="text" name='subject' class="form-control" id="subject" required>
+																			</div>
+																			<div class="mb-3">
+																				<label for="message" class="form-label">Message</label>
+																				<textarea class="form-control" name="message" placeholder="Tapez votre message ici" id="message" required></textarea>
+																
+																			</div>
+																
+																			<div class="mb-3 form-check">
+																				<input type="checkbox" class="form-check-input" id="exampleCheck1">
+																				<label class="form-check-label" for="exampleCheck1">Check me out</label>
+																			</div>
+																			<button type="submit" class="btn btn-dark-green">Submit</button>
+																		</form>
+																
+																	</main> #}
