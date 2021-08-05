@@ -36,9 +36,9 @@
 								<i class="fas fa-paw"></i>
 								Dog Corner</a>
 							<div class="navbar-nav">
-								<a class="nav-link" aria-current="page" href="index.php">Accueil</a>
-								<a class="nav-link" href="list">Tous les Chiens</a>
-								<a class="nav-link" href="contact">Contact</a>
+								<a class="nav-link" aria-current="page" href="{{path('home_index')}}">Accueil</a>
+								<a class="nav-link" href="{{path('list')}}">Tous les Chiens</a>
+								<a class="nav-link" href="#">Contact</a>
 								{% if is_granted('ROLE_ANNONCEUR') %}
 									<a href="annonceur" class="nav-link" aria-current="page">Mes annonces
 
