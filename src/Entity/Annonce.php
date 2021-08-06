@@ -163,7 +163,7 @@ class Annonce
         return $this;
     }  
     
-    public function getFirstImage(): ?string
+    public function getFirstImage(): ?Image
     {
         if ($this->getDogs()->count() <= 0) {
             return null;
@@ -175,6 +175,6 @@ class Annonce
             return null;
         }
 
-        return $firstDog->getImages()->first()->getUrlImage();
+        return $firstDog->getImages()->first();
     }
 }

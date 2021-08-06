@@ -12,7 +12,11 @@
 			<div class="row justify-content-center mx-auto">
 				<div class="col-sm-12 col-md-6 col-lg-3 col-3 mx-auto mt-2">
 					<div class="card" style=" width: 18rem;">
-						<img class="card-img-top" height="190.66px" src="{{annonce.firstImage}}">
+						{% if annonce.firstImage %}
+							<img class="card-img-top" height="190.66px" src="{{ vich_uploader_asset(annonce.firstImage)}}">
+						{% endif %}
+
+
 						<h5 class="card-title">{{annonce.titre}}</h5>
 						{% for dog in annonce.dogs %}
 							<p class="card-text">{{dog.nom}}</p>
@@ -25,12 +29,12 @@
 
 		<div class="col-sm-12 col-md-6 col-lg-3 col-3 mx-auto mt-2">
 
-
 			<a class="align-middle " href="{{path('annonce_new')}}">
 				<i class="fas fa-plus-circle"></i>
 			</a>
-
-
+			<a class="align-middle " href="{{path('image_new')}}">
+				<i>Ajouter une image</i>
+			</a>
 		</div>
 	</div>
 </section>

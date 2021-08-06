@@ -3,13 +3,16 @@
 namespace App\Entity;
 
 use App\Repository\ImageRepository;
-use Symfony\Component\HttpFoundation\File\File;
+use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass=ImageRepository::class)
+ * @Vich\Uploadable
  */
 class Image
 {
@@ -19,11 +22,6 @@ class Image
      * @ORM\Column(type="integer")
      */
     private $id;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $urlImage;
 
     /**
      * @ORM\Column(type="datetime")
@@ -55,24 +53,12 @@ class Image
 
     public function __construct()
     {
-        $this->Dog = new ArrayCollection();
+        $this->updatedAt = new DateTime();
     }
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getUrlImage(): ?string
-    {
-        return $this->urlImage;
-    }
-
-    public function setUrlImage(string $urlImage): self
-    {
-        $this->urlImage = $urlImage;
-
-        return $this;
     }
 
     public function getDog(): ?Dog
@@ -124,7 +110,7 @@ class Image
 
     public function __toString()
     {
-        return $this -> getUrlImage();
+        return $this -> getImageName();
     }
 
     
