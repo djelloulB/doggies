@@ -8,120 +8,103 @@
 	<h1 class="text-center my-5">
 		Mes Annonces :</h1>
 	<section class="py-5">
-		<div class="row justify-content-center mx-auto">
-			<div class="col-sm-12 col-md-6 col-lg-3 col-3 mx-auto mt-2">
-				<div class=" card " style=" width: 18rem;">
-					<img class="card-img-top" height="190.66px" src="https://images.unsplash.com/photo-1610692567145-2c1fe6bf9c3f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=966&q=80" alt="Card image cap">
-					<div class="card-body">
-						<h5 class="card-title">Annonce 1</h5>
-						<p class="card-text">Chien 1</p>
-						<a href="#" class="btn btn-dark-green">Voir Annonce</a>
+		{% for annonce in annonces %}
+			<div class="row justify-content-center mx-auto">
+				<div class="col-sm-12 col-md-6 col-lg-3 col-3 mx-auto mt-2">
+					<div class="card" style=" width: 18rem;">
+						<img class="card-img-top" height="190.66px" src="{{annonce.firstImage}}">
+						<h5 class="card-title">{{annonce.titre}}</h5>
+						{% for dog in annonce.dogs %}
+							<p class="card-text">{{dog.nom}}</p>
+						{% endfor %}
+						<a href="{{path('detailAnnonce', {id: annonce.id})}}" class="btn btn-dark-green">Voir Annonce</a>
 					</div>
 				</div>
 			</div>
-			<div class="col-sm-12 col-md-6 col-lg-3 col-3 mx-auto mt-2">
-				<div class=" card" style=" width: 18rem;">
-					<img class="card-img-top " src="https://images.unsplash.com/photo-1598113972215-96c018fb1a0b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=750&q=80" alt="Card image cap">
-					<div class="card-body">
-						<h5 class="card-title">Annonce 2</h5>
-						<p class="card-text">Chien 2</p>
-						<a href="#" class="btn btn-dark-green">Voir Annonce</a>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-12 col-md-6 col-lg-3 col-3 mx-auto mt-2">
-				<div class=" card" style=" width: 18rem;">
-					<img class="card-img-top" src="https://images.unsplash.com/photo-1611069648374-733e7bb73e5c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" alt="Card image cap">
-					<div class="card-body">
-						<h5 class="card-title">Annonce 3</h5>
-						<p class="card-text">Chien 3</p>
-						<a href="#" class="btn btn-dark-green">Voir Annonce</a>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-12 col-md-6 col-lg-3 col-3 mx-auto mt-2">
+		{% endfor %}
+
+		<div class="col-sm-12 col-md-6 col-lg-3 col-3 mx-auto mt-2">
 
 
-				<a class="align-middle " href="annonce-formulaire">
-					<i class="fas fa-plus-circle"></i>
-				</a>
+			<a class="align-middle " href="{{path('annonce_new')}}">
+				<i class="fas fa-plus-circle"></i>
+			</a>
 
 
-			</div>
 		</div>
-	</section>
-	<section class="py-5">
-		<h1 class="text-center mt-5">
-			Mes Messages :</h1>
+	</div>
+</section>
+<section class="py-5">
+	<h1 class="text-center mt-5">
+		Mes Messages :</h1>
 
-		<div>
-			<table id="msg-table" class="table table-striped mt-5">
-				<thead>
-					<tr>
-						<th scope="col">#</th>
-						<th scope="col">Message</th>
-						<th scope="col">repondu/non repondu</th>
-						<th class="text-center" scope="col">Action</th>
-						<th></th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<th scope="row">1</th>
-						<td>Mark</td>
-						<td>Oui</td>
-						<td>
-							<button type="button" class="btn btn-dark-green">Repondre</button>
+	<div>
+		<table id="msg-table" class="table table-striped mt-5">
+			<thead>
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Message</th>
+					<th scope="col">repondu/non repondu</th>
+					<th class="text-center" scope="col">Action</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th scope="row">1</th>
+					<td>Mark</td>
+					<td>Oui</td>
+					<td>
+						<button type="button" class="btn btn-dark-green">Repondre</button>
 
-						</td>
-						<td>
-							<button type="button" class="btn btn-danger">
-								<i class="far fa-trash-alt"></i>
-							</button>
-						</td>
-					</tr>
-					<tr>
-						<th scope="row">2</th>
-						<td>Jacob</td>
-						<td>Non</td>
-						<td>
-							<button type="button" class="btn btn-dark-green">Repondre</button>
-						</td>
-						<td>
-							<button type="button" class="btn btn-danger">
-								<i class="far fa-trash-alt"></i>
-							</button>
-						</td>
-					</tr>
-					<tr>
-						<th scope="row">3</th>
-						<td>Larry</td>
-						<td>Oui</td>
-						<td>
-							<button type="button" class="btn btn-dark-green">Repondre</button>
-						</td>
-						<td>
-							<button type="button" class="btn btn-danger">
-								<i class="far fa-trash-alt"></i>
-							</button>
-						</td>
-					</tr>
+					</td>
+					<td>
+						<button type="button" class="btn btn-danger">
+							<i class="far fa-trash-alt"></i>
+						</button>
+					</td>
+				</tr>
+				<tr>
+					<th scope="row">2</th>
+					<td>Jacob</td>
+					<td>Non</td>
+					<td>
+						<button type="button" class="btn btn-dark-green">Repondre</button>
+					</td>
+					<td>
+						<button type="button" class="btn btn-danger">
+							<i class="far fa-trash-alt"></i>
+						</button>
+					</td>
+				</tr>
+				<tr>
+					<th scope="row">3</th>
+					<td>Larry</td>
+					<td>Oui</td>
+					<td>
+						<button type="button" class="btn btn-dark-green">Repondre</button>
+					</td>
+					<td>
+						<button type="button" class="btn btn-danger">
+							<i class="far fa-trash-alt"></i>
+						</button>
+					</td>
+				</tr>
 
-					<tr>
-						<th scope="row">5</th>
-						<td>Antoine</td>
-						<td>Peut etre</td>
-						<td>
-							<button type="button" class="btn btn-dark-green">Repondre</button>
-						</td>
-						<td>
-							<button type="button" class="btn btn-danger">
-								<i class="far fa-trash-alt"></i>
-							</button>
-						</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
-	</section>
-{% endblock %}
+				<tr>
+					<th scope="row">5</th>
+					<td>Antoine</td>
+					<td>Peut etre</td>
+					<td>
+						<button type="button" class="btn btn-dark-green">Repondre</button>
+					</td>
+					<td>
+						<button type="button" class="btn btn-danger">
+							<i class="far fa-trash-alt"></i>
+						</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</section>{% endblock %}

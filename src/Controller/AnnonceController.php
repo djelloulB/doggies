@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Annonce;
+use App\Entity\Annonceur;
 use App\Entity\Dog;
 use App\Form\AnnonceType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -28,8 +29,12 @@ class AnnonceController extends AbstractController
          */
         public function form(Request $request, EntityManagerInterface $em, ?Annonce $annonce = null): Response
         {
+        /** @var Annonceur $user */
+        $user = $this->getUser();
+
             if (empty($annonce)) {
                 $annonce = new Annonce();
+                $annonce -> setAnnonceur($user);
                 $chien = new Dog();
                 $annonce->addDog($chien);
             }

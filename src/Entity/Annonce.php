@@ -35,7 +35,7 @@ class Annonce
     private $dateMAJ;
 
     /**
-     * @ORM\OneToMany(targetEntity=Dog::class, mappedBy="annonce")
+     * @ORM\OneToMany(targetEntity=Dog::class, mappedBy="annonce", cascade={"persist"})
      * @Assert\Count(
      *      min = 1,
      *      max = 5,
@@ -161,5 +161,20 @@ class Annonce
         $this->annonceur = $annonceur;
 
         return $this;
+    }  
+    
+    public function getFirstImage(): ?string
+    {
+        if ($this->getDogs()->count() <= 0) {
+            return null;
+        }
+
+        $firstDog = $this->getDogs()->first();
+
+        if ($firstDog->getImages()->count() <= 0) {
+            return null;
+        }
+
+        return $firstDog->getImages()->first()->getUrlImage();
     }
 }

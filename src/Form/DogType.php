@@ -19,6 +19,7 @@ class DogType extends AbstractType
             ->add('ifLof')
             ->add('description')
             ->add('Breeds')
+            ->add('images')
         ;
     }
 
