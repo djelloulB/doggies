@@ -132,8 +132,10 @@ class AppFixtures extends Fixture
             $dog->addBreed($d[0]);
             $imagesForDog = $images[$key];
             foreach ($imagesForDog as $imageForDog) {
+                $pathWithoutImg = substr($imageForDog, 4);
                 $image = new Image();
                 $image->setUrlImage($imageForDog);
+                $image->setImageName($pathWithoutImg);
                 $manager->persist($image);
                 $img[] = $image;
                 $dog->addImage($image);

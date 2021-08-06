@@ -66,7 +66,7 @@ class Dog
     private $Breeds;
 
     /**
-     * @ORM\OneToMany(targetEntity=Image::class, mappedBy="dog")
+     * @ORM\OneToMany(targetEntity=Image::class, mappedBy="dog", cascade={"persist"})
      */
     private $images;
 
