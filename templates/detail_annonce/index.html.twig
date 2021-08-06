@@ -14,90 +14,90 @@
 			<small class="text-muted">Last updated 3 mins ago</small>
 		</p>
 		<div class="row mx-auto">
-			{% for key, annonce in annonces %}
-				<div class="card my-3 ">
-					<div class="row g-0">
-						<div class="col-md-4">
-
-							<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-								<div class="carousel-indicators">
-									<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-									<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-									<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-									<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
-									<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
-								</div>
+			<div class="card my-3 ">
+				<div class="row g-0">
+					<div class="col-md-4">
+						<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+							{% for dog in annonce.dogs %}
 								<div class="carousel-inner">
-									<div class="carousel-item active">
-										<img src="{{asset('/img/Arturo/arthuro.jpg')}}" class="d-block w-100" alt="arthuro1">
-									</div>
-									<div class="carousel-item">
-										<img src="{{asset('img/Arturo/143960_w900h722cx294cy189.jpg')}}" class="d-block w-100" alt="arthuro2">
-									</div>
-									<div class="carousel-item">
-										<img src="{{asset('img/Arturo/43957_h300.jpg')}}" class="d-block w-100" alt="arthuro3">
-									</div>
-									<div class="carousel-item">
-										<img src="{{asset('img/Arturo/43956_h300.jpg')}}" class="d-block w-100" alt="arthuro3">
-									</div>
-									<div class="carousel-item">
-										<img src="{{asset('img/Arturo/43951_h300.jpg')}}" class="d-block w-100" alt="arthuro3">
-									</div>
+									{% for image in dog.images %}
+										<div class="carousel-item {% if loop.index == 1 %}active{% endif %}" id="slide{{ loop.index }}">
+											<img class="d-block w-100" src="{{ asset(image.urlImage) }}">
+										</div>
+
+									{% endfor %}
 								</div>
-								<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+
+
+								<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
 									<span class="carousel-control-prev-icon" aria-hidden="true"></span>
 									<span class="visually-hidden">Previous</span>
 								</button>
-								<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+								<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
 									<span class="carousel-control-next-icon" aria-hidden="true"></span>
 									<span class="visually-hidden">Next</span>
 								</button>
 							</div>
 
+
 							{# {% for dog in annonce.dogs %}
-																																																																																																																																																																																																																		{% for image in dog.images %}
-																																																																																																																																																																																																																			<img src="{{ asset(image.urlImage) }}" class="img-fluid rounded-start" alt="...">
-																																																																																																																																																																																																																		{% endfor %}
-																																																																																																																																																																																																																	{% endfor %} #}
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																					{% for image in dog.images %}
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																						<img src="{{ asset(image.urlImage) }}" class="img-fluid rounded-start" alt="...">
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																					{% endfor %}
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																				{% endfor %} #}
 						</div>
 						<div class="col-md-8">
 							<div class="card-body">
 
 								<div class="d-flex bd-highlight mb-3">
 									<div class="me-auto p-2 bd-highlight">
-										<h2 class="card-title">Arturo</h2>
+										<h2 class="card-title">{{ dog.nom }}</h2>
 									</div>
 									{# <div class="p-2 bd-highlight">Flex item</div> #}
 									<div class="p-2 bd-highlight">
 										<a class="btn btn-dark-green" href="#" role="button">Adopter</a>
 									</div>
 								</div>
-
+								{# {{dump(dog)}} #}
 								<p class="card-text">Adoptable :
+									{% if dog.estAdopte == 0  %}
+										oui
+									{% else %}
+										non
+									{% endif %}
 								</p>
 								<p class="card-text">race :
+									{% for  Breed in dog.Breeds  %}
+										{{ Breed.nom}}
+									{% endfor %}
 								</p>
 								<p class="card-text">Tolerance :
+									{% if dog.estTolerant == 1  %}
+										oui
+									{% else %}
+										non
+									{% endif %}
 								</p>
 								<p class="card-text">Antescedents  :
+									{{ dog.antecedents }}
 								</p>
 								<p class="card-text">L.O.F :
+									{% if	 dog.ifLof == 1  %}
+										valide
+									{% else %}
+										non inscrit
+									{% endif %}
 								</p>
-								<p class="card-text">description : Arturo est un ancien chien de cirque. 
-																																																																																																																																																																																																																																																																																																																	Recueilli par un riche milliardaire après la mort de ses parents trapézistes. 
-																																																																																																																																																																																																																																																																																																																	Arturo sait que ses parents ne sont pas morts accidentellement. 
-																																																																																																																																																																																																																																																																																																																	En voulant se venger, il découvre le transformisme.  
-																																																																																																																																																																																																																																																																																																																	Grâce à ses dons en métamorphose il fit plusieurs missions impossibles.
-																																																																																																																																																																																																																																																																																																																	Mais à la suite de trouble de stress post-traumatique il développa des symptomes de trouble de l'identité.
-																																																																																																																																																																																																																																																																																																																	Arturo est une vrais diva qui nécessite un budget toilettage conséquent qui sera entierement prise en charge par sa retraite d'ancien combattant.
+								<p class="card-text">description :
+									{{ dog.description }}
 								</p>
-
 
 							</div>
 						</div>
-					</div>
+					{% endfor %}
+
 				</div>
-			{% endfor %}
+			</div>
 		</div>
 	</section>
 
