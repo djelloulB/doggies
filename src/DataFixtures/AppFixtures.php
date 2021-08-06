@@ -79,7 +79,7 @@ class AppFixtures extends Fixture
 
             ////////////BREED////////////
             $bs = [];
-            $breeds = ['Labrador', 'Golden Retriever', 'Berger Allemand', 'Cavalier King Charles', 'Beagle', 'Husky de Sibérie', 'Teckel', 'Bouvier Bernois', 'Jack Russell', 'Berger Blanc Suisse', 'Shih Tzu', 'Saint-Bernard', 'Malamute de Alaska'];
+            $breeds = ['Caniche','Autre','Berger','Berger belge Malinois','Bouledogue francais','Chien loup de Saarloos','Berger picard','Berger des Pyrenees','Labrador', 'Golden Retriever', 'Berger Allemand', 'Cavalier King Charles', 'Beagle', 'Husky de Sibérie', 'Teckel', 'Bouvier Bernois', 'Jack Russell', 'Berger Blanc Suisse', 'Shih Tzu', 'Saint-Bernard', 'Malamute de Alaska'];
             foreach ($breeds as $b) {
                 $breed = new Breed();
                 $breed->setNom($b);
@@ -91,12 +91,14 @@ class AppFixtures extends Fixture
         $img = [];
         $images = [
             ['img\Arturo\43951_h300.jpg','img\Arturo\43956_h300.jpg','img\Arturo\43957_h300.jpg','img\Arturo\143960_w900h722cx294cy189.jpg','img\Arturo\arthuro.jpg'],
-            ['img\BLAZE\443776_0.jpg','img\BLAZE\443776_1.jpg','img\BLAZE\443776_2.jpg','img\BLAZE\443776_3.jpg','img\BLAZE\443776_4.jpg'],['img\LORD GASPARD II\507184_0.jpg','img\LORD GASPARD II\507184_1.jpg','img\LORD GASPARD II\507184_2.jpg','img\LORD GASPARD II\507184_3.jpg','img\LORD GASPARD II\507184_4.jpg'],
+            ['img\BLAZE\443776_0.jpg','img\BLAZE\443776_1.jpg','img\BLAZE\443776_2.jpg','img\BLAZE\443776_3.jpg','img\BLAZE\443776_4.jpg'],
+            ['img\LORD GASPARD II\507184_0.jpg','img\LORD GASPARD II\507184_1.jpg','img\LORD GASPARD II\507184_2.jpg','img\LORD GASPARD II\507184_3.jpg','img\LORD GASPARD II\507184_4.jpg'],
             ['img\MAX\505833_0.jpg','img\MAX\505833_1.jpg','img\MAX\505833_2.jpg','img\MAX\505833_3.jpg','img\MAX\505833_4.jpg'],
             ['img\POUIK\507364_0.jpg','img\POUIK\507364_1.jpg','img\POUIK\507364_2.jpg','img\POUIK\507364_3.jpg','img\POUIK\507364.jpg'],
             ['img\PYPPERS\507330_0.jpg','img\PYPPERS\507330_1.jpg','img\PYPPERS\507330_2.jpg','img\PYPPERS\507330_3.jpg','img\PYPPERS\507330_4.jpg'],
             ['img\SAYA\274263_0.jpg','img\SAYA\274263_3.jpg','img\SAYA\274263_4.jpg','img\SAYA\274263_5.jpg','img\SAYA\274263_6.jpg'],
             ['img\SHIPER\485110_0.jpg','img\SHIPER\485110_1.jpg','img\SHIPER\485110_2.jpg','img\SHIPER\485110_3.jpg','img\SHIPER\485110.jpg']
+           
         ];
         // foreach ($images as $imgs) {
         //     foreach ($imgs as $i) {
@@ -109,15 +111,22 @@ class AppFixtures extends Fixture
 
         ////////////DOGS////////////
         $do = [];
-        $dogs = [[$bs[0],'Patrick','A eu la galle','Contrairement à ce que son nom pourrait laisser entendre, le Berger australien n’est pas originaire d’Australie, mais du Pays basque.',false, true, true],
+        $dogs = [[$bs[0],'Arturo','A eu la galle',"Arturo est un ancien chien de cirque. Recueilli par un riche milliardaire après la mort de ses parents trapézistes. Arturo sait que ses parents ne sont pas morts accidentellement. En voulant se venger, il découvre le transformisme.  Grâce à ses dons en métamorphose il fit plusieurs missions impossibles. Mais à la suite de trouble de stress post-traumatique il développa des symptomes de trouble de l'identité. Arturo est une vrais diva qui nécessite un budget toilettage conséquent qui sera entierement prise en charge par sa retraite d'ancien combattant.",false, true, true],
 
-        [$bs[1],'Robert','Pas vacciné','Les ancêtres du Beagle étaient présents en Grèce antique comme l’attestent plusieurs sources. Les historiens supposent que ces chiens courants ont ensuite été importés par les Romains au moment de la conquête de l’Angleterre.',false, true, false],
+        [$bs[1],'Blaze ','Pas vacciné',"Blaze est une crème de chien. Calme, propre, il peut rester seul sans faire de bêtises. Il s'adaptera rapidement dans son nouveau foyer. Il devra être le seul animal de la famille. Il sait se montrer bon gardien, il faudra donc faire attention avec les inconnus et il ne pourra pas vivre avec des enfants.",false, true, false],
 
-        [$bs[2],'Gerard','non castré','Le Malamute de l’Alaska, plus simplement appelé Malamute, est un chien de traîneau aux origines anciennes, utilisé depuis très longtemps par la tribu inuit des Mahlemiuts, à qui il doit son nom',false, true, true],
+        [$bs[2],'Lord gaspard 2','non castré',"Arrivé le 23 août 2018 de Guadeloupe après un passé douloureux puisqu'il était battu lorsqu'il dormait et utilisé pour des combats de chiens; Lord a rapidement rejoint un foyer pendant plusieurs mois, avant de revenir au refuge en mai 2019. Même si celui-ci n'a pas toujours été tendre envers lui, Lord ne garde aucune rancoeur envers l'humain avec lequel il est adorable. Toutefois, de par son passé, nous préférons le placer sans enfants (contacter le refuge pour plus de renseignements). Véritable gourmand, Lord sait faire assis et donne la patte si on le lui demande. Agréable à promener, Lord est une bonne patte. Il ne tire pas en laisse et est plutôt tranquille; sauf lorsqu'il se retrouve face à ses congénères, avec lesquels il peut se montrer réactif. Joueur (il adore par ailleurs son ballon), Lord est un chien reconnaissant; qui mérite de découvrir ce qu'est une vraie vie de chien !",false, true, true],
 
-        [$bs[3],'Alfred','Puces frequentes','Le Cavalier King Charles Spaniel est un petit épagneul originaire d’Angleterre. Ses origines sont anciennes : son ancêtre, le King Charles Spaniel était l’animal de prédilection du roi Charles II d’Angleterre, au XVIIe siècle, d’où son nom',false, true, true],
+        [$bs[3],'Max','Puces frequentes',"Le beau Max nous vient d'un autre refuge après y avoir passé deux ans... C'est un chien adorable, très câlin, qui cherche par tous les moyens à nous faire plaisir, très gourmand, sage en balade (un peu coquin avec les voitures mais son ancien refuge a fait un gros travail là dessus qui a très bien marché). Il cherche des adoptants connaisseurs de sa race, et pouvant continuer l'éducation positive avec lui car c'est ce qu'il demande. Il devra être le seul animal du foyer et ne pourra pas vivre avec de jeunes enfants. Un placement en maison sans escaliers sera mieux pour lui car du fait de son âge il commence à avoir de petites faiblesses. N'hésitez pas à venir le rencontrer, et ne vous fiez pas à sa présentation la première fois que vous le voyez, il ne reste pas longtemps comme ça mais oui effectivement il faudra revenir le voir plusieurs fois !",false, true, true],
 
-        [$bs[4],'George','A eu un accident','Le Berger allemand a vu le jour en Allemagne à la fin du XIXe siècle. La paternité de la race est attribuée à Marc Emil Frederic von Stephanitz.',false, true, false]];
+        [$bs[4],'Pouik','A eu un accident',"Pouik est une adorable chienne très courageuse et patiente. Arrivée au refuge avec ses 7 chiots, elle a passé ses 2 derniers mois en famille d'accueil pour plus de confort avec ses bébés. Depuis leurs retours au refuge, les petits n'ont pas eu de mal à trouver leur nouveau foyer. A son tour de trouver le sien pour la vie. Pouik est une chienne calme, très câline, et à l'écoute. Elle tolére les autres chiens si ils la laissent tranquille. Par contre madame n'aime pas du tout les chats et est une vraie chasseuse lorsqu'elle a flairé quelque chose! Un jardin clos sera nécessaire.",false, true, false],
+
+        [$bs[5],'Pyppers','chien battu',"Craintive et peu sûre d'elle, Pyppers doit partir impérativement avec un autre chien de son gabarit déjà présent au foyer et en pavillon bien clôturé.",false, true, true],
+
+        [$bs[6],'Saya',"gardien d'athéna","Saya a été retirée pour mauvais traitements, elle vivait dans une cave et n'a donc jamais connu le monde extérieur. Son passé très difficile fait qu'elle est très réactive à toute nouvelle stimulation (animaux, inconnus, bruits, gestes brusques...), et elle aura besoin de maîtres avertis connaissant bien les chiens. Et lorsqu'elle aura confiance en vous, vous découvrirez une chienne hyper câline, obéissante et tellement attachante! Saya ne s'entend pas avec les autres animaux et devra donc être le seul animal du foyer. N'hésitez pas à contacter le refuge pour avoir plus d'informations sur la belle Saya.",false, true, false],
+
+        [$bs[7],'Shiper','arrête de chiper',"Notre gentil Shiper est le doyen du refuge, c'est un chien au regard attendrissant. Il n'est plus tout jeune et la vie au refuge ne lui convient pas. Un environnement calme sans enfant sera nécessaire. Il n'aime pas la contrainte et aime avoir sa tranquillité. Il a été trouvé errant de ce fait nous ne connaissons pas son passé. Venez vite le rencontrer et lui offrir sa chance , l'hiver au refuge est rude pour nos papies et mamies.",false, true, true]];
+  
         foreach ($dogs as $key => $d) {
             $dog = new Dog();
             $dog->addBreed($d[0]);
@@ -141,11 +150,13 @@ class AppFixtures extends Fixture
         ////////////ANNONCES////////////
 
         $annon = [];
-        $annonces = [[$do[0],'Annonce1',new \DateTime("now")],
-        [$do[1],'Annonce2',new \DateTime("now")],
-        [$do[2],'Annonce3',new \DateTime("now")],
-        [$do[3],'Annonce4',new \DateTime("now")],
-        [$do[4],'Annonce5',new \DateTime("now")]];
+
+        $annonces = [];
+        for ($i = 0; $i < count($dogs); $i++) {
+            $annonces[] = [$do[$i],'Annonce'.$i,new \DateTime("now")];
+        }
+
+    
         foreach ($annonces as $ann) {
             $annonce = new Annonce();
             $annonce->addDog($ann[0]);
