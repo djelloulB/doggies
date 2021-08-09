@@ -11,7 +11,7 @@
 	</p>
 	{% for dog in annonce.dogs %}
 		{% for image in dog.images %}
-			<img src="{{ asset(image.urlImage) }}"/>
+			<img src="{{ vich_uploader_asset(annonce.firstImage)}}"/>
 		{% endfor %}
 	{% endfor %}
 	{{form_start(form)}}

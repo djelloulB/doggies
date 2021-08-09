@@ -25,7 +25,7 @@
 				<div class="card shadow" style="width: 25rem;">
 					{% for dog in annonce.dogs %}
 						{% for image in dog.images %}
-							<img src="{{ asset(image.urlImage) }}" class="card-img-top" alt="...">
+							<img src="{{ vich_uploader_asset(annonce.firstImage)}}" class="card-img-top" alt="...">
 						{% endfor %}
 					{% endfor %}
 					<div class="card-body">
@@ -48,7 +48,7 @@
 				<div class="col-3 p-0 ms-4 mb-2 card bg-dark text-white">
 					{% for dog in annonce.dogs %}
 						{% for image in dog.images %}
-							<img src="{{ asset(image.urlImage) }}" class="card-img" alt="...">
+							<img src="{{ vich_uploader_asset(annonce.firstImage)}}" class="card-img" alt="...">
 						{% endfor %}
 					{% endfor %}
 					<div class="card-img-overlay">
