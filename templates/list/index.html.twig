@@ -6,24 +6,48 @@
 {% block body %}
 	<main class="container mx-auto py-5">
 		<h2 class="text-center">Liste des chiens</h2>
-		<section class="row py-3">
-			{% for key, annonce in annonces %}
-				<div class=" px-auto col-3 py-5">
-					<div class="card shadow" style="width: 25rem;">
-						{% for dog in annonce.dogs %}
-							{% for image in dog.images %}
-								<img src="{{ vich_uploader_asset(annonce.firstImage)}}" class="card-img-top" alt="...">
+		<section class="py-5">
+			<h2 class="text-center my-5">Dernier chiens ajoutés</h2>
+			<div class="row justify-content-center">
+				{% for annonce in annonces %}
+					<div class="card m-5 shadow col-3 ">
+						<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+							{% for dog in annonce.dogs %}
+								<div class="carousel-inner">
+									{% for image in dog.images %}
+										<div class="carousel-item {% if loop.index == 1 %}active{% endif %}" id="slide{{ loop.index }}">
+											<img class="d-block w-100" src="{{ vich_uploader_asset(image)}}">
+										</div>
+										<div class="carousel-caption">
+											<h3>{{ dog.nom }}</h3>
+										</div>
+									{% endfor %}
+								</div>
 							{% endfor %}
-						{% endfor %}
-						<div class="card-body">
-							<h5 class="card-title">{{annonce.titre}}</h5>
-							<p class="card-text">card title and make up the bulk of the card's content.</p>
-							<a href="detailAnnonce" class="btn btn-dark-green">Voir plus</a>
+							<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+								<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+								<span class="visually-hidden">Previous</span>
+							</button>
+							<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+								<span class="carousel-control-next-icon" aria-hidden="true"></span>
+								<span class="visually-hidden">Next</span>
+							</button>
 						</div>
+
+						<div class="card-body">
+							<h4 class="card-title">{{ annonce.titre }}</h4>
+							<h5>Publié le:
+								{{ annonce.dateMAJ|date('d/m/Y à H:i')}}</h5>
+							<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+							<a href="{{ path('detailAnnonce', {id: annonce.id}) }}" class="btn btn-dark-green">Voir l'annonce</a>
+						</div>
+
 					</div>
-				</div>
-			{% endfor %}
+				{% endfor %}
+				<a class="link-info" href="{{asset('list')}}">Voir tous les chiens >></a>
+			</div>
+		</section>
 
 
-		</main>
-	{% endblock %}
+	</main>
+{% endblock %}
