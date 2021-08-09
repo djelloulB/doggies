@@ -41,7 +41,7 @@ class ImageController extends AbstractController
 
             $em->persist($image);// enregistre l'image
             $em->flush(); //envoie l'image
-            return $this->redirectToRoute('annonceur_index');
+            return $this->redirectToRoute('annonce_new');
         }
 
 

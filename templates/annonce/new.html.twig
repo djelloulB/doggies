@@ -5,6 +5,7 @@
 	{{ form_start(form)}}
 	{{ form_row(form.titre) }}
 	{{ form_row(form.dogs) }}
+	<a href="{{path("image_new")}}" class="btn btn-info">Ajouter une image</a>
 	<button class="btn btn-info" type="submit">Valider</button>
 	{{ form_end(form) }}
 {% endblock %}
