@@ -134,7 +134,6 @@ class AppFixtures extends Fixture
             foreach ($imagesForDog as $imageForDog) {
                 $pathWithoutImg = substr($imageForDog, 4);
                 $image = new Image();
-                $image->setUrlImage($imageForDog);
                 $image->setImageName($pathWithoutImg);
                 $manager->persist($image);
                 $img[] = $image;
