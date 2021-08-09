@@ -12,7 +12,11 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Annonceur extends Utilisateur
 {
-
+     /**
+      *
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $image;
     /**
      * @ORM\OneToMany(targetEntity=Annonce::class, mappedBy="annonceur")
      */
@@ -79,5 +83,25 @@ class Annonceur extends Utilisateur
         $roles[] = 'ROLE_ANNONCEUR';
 
         return array_unique($roles);
+    }
+
+    /**
+     * Get the value of image
+     */ 
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * Set the value of image
+     *
+     * @return  self
+     */ 
+    public function setImage($image)
+    {
+        $this->image = $image;
+
+        return $this;
     }
 }

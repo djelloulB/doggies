@@ -18,39 +18,61 @@
 
 {% block body %}
 
-	<h2 class="text-center">Dernier chiens ajoutés</h2>
-	<section id="last-dog" class="row py-3 mb-5">
-		{% for key, annonce in annonces %}
-			<div class=" px-auto col-3 py-5">
-				<div class="card shadow" style="width: 25rem;">
-					{% for dog in annonce.dogs %}
-						{% for image in dog.images %}
-							<img src="{{ vich_uploader_asset(annonce.firstImage)}}" class="card-img-top" alt="...">
-						{% endfor %}
-					{% endfor %}
-					<div class="card-body">
-						<h5 class="card-title">{{annonce.titre}}</h5>
-						<p class="card-text">card title and make up the bulk of the card's content.</p>
-						<a href="{{ path('detailAnnonce', {id: annonce.id}) }}" class="btn btn-dark-green">Voir plus</a>
-					</div>
-				</div>
-			</div>
-		{% endfor %}
-		<a class="" href="list">Voir tous les chiens >>
-		</a>
 
+	<section class="py-5">
+		<h2 class="text-center my-5">Dernier chiens ajoutés</h2>
+		<div class="row justify-content-center">
+			{% for annonce in annonces %}
+				<div class="card m-5 shadow col-3 ">
+					<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+						{% for dog in annonce.dogs %}
+							<div class="carousel-inner">
+								{% for image in dog.images %}
+									<div class="carousel-item {% if loop.index == 1 %}active{% endif %}" id="slide{{ loop.index }}">
+										<img class="d-block w-100" src="{{ vich_uploader_asset(image)}}">
+									</div>
+									<div class="carousel-caption">
+										<h3>{{ dog.nom }}</h3>
+									</div>
+								{% endfor %}
+							</div>
+						{% endfor %}
+						<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+							<span class="visually-hidden">Previous</span>
+						</button>
+						<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+							<span class="carousel-control-next-icon" aria-hidden="true"></span>
+							<span class="visually-hidden">Next</span>
+						</button>
+					</div>
+
+					<div class="card-body">
+						<h4 class="card-title">{{ annonce.titre }}</h4>
+						<h5>Publié le:
+							{{ annonce.dateMAJ|date('d/m/Y à H:i')}}</h5>
+						<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+						<a href="{{ path('detailAnnonce', {id: annonce.id}) }}" class="btn btn-dark-green">Voir l'annonce</a>
+					</div>
+
+				</div>
+			{% endfor %}
+			<a class="link-info" href="{{asset('list')}}">Voir tous les chiens >></a>
+		</div>
 	</section>
 	<hr>
 	<section id="partenaires" class="py-5">
 		<h2 class="text-center mb-5">Nos partenaires eleveurs et associations</h2>
 		<div class="row mx-auto ">
-			{% for key, annonce in annonces %}
+			{% for key, annonceur in annonceurs %}
 				<div class="col-3 p-0 ms-4 mb-2 card bg-dark text-white">
-					{% for dog in annonce.dogs %}
-						{% for image in dog.images %}
-							<img src="{{ vich_uploader_asset(annonce.firstImage)}}" class="card-img" alt="...">
-						{% endfor %}
-					{% endfor %}
+
+
+					{% if annonceur.image %}
+
+						<img src="{{ asset(annonceur.image) }}" class="card-img" alt="...">
+
+					{% endif %}
 					<div class="card-img-overlay">
 						<h5 class="card-title">Card title</h5>
 						<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -59,9 +81,5 @@
 				</div>
 			{% endfor %}
 		</div>
-
-
 	</section>
-
-
 {% endblock %}
