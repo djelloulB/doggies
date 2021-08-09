@@ -25,6 +25,7 @@ class HomeController extends AbstractController
     {
         $annonces = $annonceRepository->findAll();
         $annonceurs = $annonceurRepository->findAll();
+    
 
                 // $dogs = [];
         

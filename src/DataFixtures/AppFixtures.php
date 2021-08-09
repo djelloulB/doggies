@@ -168,37 +168,75 @@ class AppFixtures extends Fixture
         }
 
         ////////////ANNONCEUR////////////
-
-        $annonceurs = [];
-        $annonceur = new Annonceur();
-        foreach($annon as $ann) {
-            $annonceur->addAnnonce($ann);
+        $annonceurs = array(
+            1 => array (
+                "image"  => 'https://www.wikichien.fr/wp-content/uploads/sites/4/60cd9e2dbe351-1024x576.jpeg',
+                "nom" => 'CHARRETTE ',
+                "prenom"   => 'JANINE',
+                "email" => "info@lagaidocienne",
+                "motDePasse" => "",
+                'residence' => '1101 Chemin de Cladier',
+                'ville'=> 'Saint-Paul-les-Fonts',
+                'telephone'=> '0608900580',
+                'departement' => 'Gard',
+                
+            ),2 => array (
+                "image"  => 'https://www.wikichien.fr/wp-content/uploads/sites/4/lac_jpeg-400x298.jpg',
+                "nom" => 'GAUBERT',
+                "prenom"   => 'NICOLAS',
+                "email" => "gaubert@fr.fr",
+                "motDePasse" => "",
+                'residence' => '42 Rue des Pyrénées',
+                'ville'=> 'BAZET',
+                'telephone'=> '0630154560',
+                'departement' => 'Hautes-Pyrénées',
+                
+            ), 3 =>     
+            array (
+                "image"  => 'https://v.fastcdn.co/u/dacf0b1a/50971768-0-50436040-0-SPA-1.png',
+                "nom" => 'Refuge de Lyon-Marennes',
+                "prenom"   => 'Pierre',
+                "email" => "info@lagaidocienne",
+                "motDePasse" => "",
+                'residence' => '660, chemin de Chantemerle',
+                'ville'=> 'BAZET',
+                'telephone'=> '0610203040',
+                'departement' => 'Hautes-Pyrénées'
+            )
+        );
+        $listAnnonceurs = [];
+        foreach($annonceurs as $annonceur) {
+            $a = new Annonceur();
+           
+            $a->setNom($annonceur["nom"]);
+            $a->setPrenom($annonceur["prenom"]);
+            $a->setTelephone($annonceur["telephone"]);
+            $a->setVille($annonceur["ville"]);
+            $a->setDepartement($annonceur["departement"]);
+            $a->setResidence($annonceur["residence"]);
+            $a->setEmail($annonceur["email"]);
+            $a->setMotDePasse($this->passwordHasher->hashPassword($a,'123'));
+            $a->setImage($annonceur["image"]);
+            //$manager est une variable de type entity manager
+            $manager->persist($a);
+            $listAnnonceurs[] = $a;
         }
-        $annonceur->setNom('spa');
-        $annonceur->setPrenom('spa');
-        $annonceur->setTelephone('0686822860');
-        $annonceur->setVille('Marseille ');
-        $annonceur->setDepartement('13 ');
-        $annonceur->setResidence('les palmiers ');
-        $annonceur->setEmail('email@gmail.com');
-
-        $mdp = $this->passwordHasher->hashPassword($annonceur, '123');
-        $annonceur->setMotDePasse($mdp);
-
-        $manager->persist($annonceur);
-        $annonceurs[] = $annonceur;
+       
 
         ////////////CATEGORIE////////////
 
         $catego = [];
-        $categories = [[$annonceurs[0], 'désignation c pk deja']];
-        foreach ($categories as $cate) {
+            //On creer un objet categorie
             $categorie = new Categorie();
-            $categorie->addAnnonceur($cate[0]);
-            $categorie->setDesignation($cate[1]);
+            //On va parcourir nos annonceurs pour leur affecter une categorie
+            foreach($listAnnonceurs as $annonceur){
+                $annonceur->setCategorie($categorie);
+            }
+            //on ajoute une designation a notre objet categorie
+            $categorie->setDesignation('SPA');
             $manager->persist($categorie);
             $catego[] = $categorie;
-        }
+     
 
         ////////////ADMIN////////////
 
