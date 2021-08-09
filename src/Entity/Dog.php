@@ -51,10 +51,10 @@ class Dog
     private $ifLof;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="text", nullable=true)
      * @Assert\Length(
      *min = 5,
-     *max = 255,
+     *max = 65255,
      *minMessage = "Your first name must be at least {{ limit }} characters long",
      *maxMessage = "Your first name cannot be longer than {{ limit }} characters")
      */
