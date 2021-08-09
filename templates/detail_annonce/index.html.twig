@@ -22,7 +22,7 @@
 								<div class="carousel-inner">
 									{% for image in dog.images %}
 										<div class="carousel-item {% if loop.index == 1 %}active{% endif %}" id="slide{{ loop.index }}">
-											<img class="d-block w-100" src="{{ vich_uploader_asset(annonce.firstImage)}}">
+											<img class="d-block w-100" src="{{ vich_uploader_asset(image)}}">
 										</div>
 
 									{% endfor %}
@@ -41,10 +41,10 @@
 
 
 							{# {% for dog in annonce.dogs %}
-																																																																																																																											{% for image in dog.images %}
-																																																																																																																																																																											<img src="{{ vich_uploader_asset(annonce.firstImage)}}" class="img-fluid rounded-start" alt="...">
-																																																																																																																																																																																																																																																																																									{% endfor %}
-																																																																																																																																																																								{% endfor %} #}
+																																																																																																																																									{% for image in dog.images %}
+																																																																																																																																																																																									<img src="{{ vich_uploader_asset(annonce.firstImage)}}" class="img-fluid rounded-start" alt="...">
+																																																																																																																																																																																																																																																																																																							{% endfor %}
+																																																																																																																																																																																						{% endfor %} #}
 						</div>
 						<div class="col-md-8">
 							<div class="card-body">
