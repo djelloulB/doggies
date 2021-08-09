@@ -15,8 +15,9 @@ use Doctrine\ORM\Mapping\Id;
 
 class DetailAnnonceController extends AbstractController
 {
+    // ici le requirement est le 2éme parametre qui oblige a avoir un chiffre > 0
     /**
-     * @Route("/annonce/{id}", name="detailAnnonce")
+     * @Route("/annonce/{id}", requirements={"id"="\d+"}, name="detailAnnonce") 
      */
     public function index(Annonce $annonce): Response
     {
