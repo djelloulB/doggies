@@ -23,7 +23,7 @@ class HomeController extends AbstractController
      */
     public function index(AnnonceurRepository $annonceurRepository, AnnonceRepository $annonceRepository): Response
     {
-        $annonces = $annonceRepository->findAll();
+        $annonces = $annonceRepository->findBy([], ['dateMAJ' =>'DESC'], 5);
         $annonceurs = $annonceurRepository->findAll();
     
 
