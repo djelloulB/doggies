@@ -15,12 +15,12 @@ class AdoptantType extends AbstractType
             ->add('nom')
             ->add('prenom')
             ->add('email')
-            ->add('motDePasse')
+            ->add('plainPassword')
             ->add('residence')
             ->add('telephone')
             ->add('ville')
             ->add('departement')
-           
+            
         ;
     }
 
