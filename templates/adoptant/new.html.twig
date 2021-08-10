@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<main class="container mx-auto py-5">
+		<h2 class="text-center">Création de compte adoptants</h2>
+		{{ form_start(form, {
+			attr: {
+				class: 'shadow p-5'
+			}
+		}) }}
+		{% for message in app.flashes('success') %}
+			<div class="alert alert-success">
+				{{ message }}
+			</div>
+		{% endfor %}
+		{{ form_row(form.nom) }}
+		{{ form_row(form.prenom) }}
+		{{ form_row(form.email) }}
+		{{ form_row(form.plainPassword) }}
+		{{ form_row(form.residence) }}
+		{{ form_row(form.telephone) }}
+		{{ form_row(form.ville) }}
+		{{ form_row(form.departement) }}
+
+
+		<button type="submit" class="btn btn-dark-green">Submit</button>
+		{{form_end(form)}}
+
+	</main>
+{% endblock %}
+
+{# 
+	{% block javascripts %}
+		<script src="{{ asset('js/collection.js') }}"></script>
+	{% endblock %} #}
