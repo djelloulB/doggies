@@ -19,22 +19,18 @@ class AnnonceurRepository extends ServiceEntityRepository
         parent::__construct($registry, Annonceur::class);
     }
 
-    // /**
-    //  * @return Annonceur[] Returns an array of Annonceur objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    /**
+     * @return Annonceur[] Returns an array of Annonceur objects
+     */
+    public function findByDateMAJ()  //methode pour faire une requete de type sql
     {
-        return $this->createQueryBuilder('a')
-            ->andWhere('a.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('a.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
+        return $this->createQueryBuilder('annonceur') //'annonceur' = alias de la table annonceur
+            ->leftJoin('annonceur.annonces', 'annonce') //jointure de la table annonceur aux annonce, 2eme param = alias, leftJoin pour choper tous les annonceurs, même ceux qui n'ont pas d'annonces
+            ->orderBy('annonce.dateMAJ', 'DESC') //ordonné par la date de maj des annonces, en ordre deccroissant
+            ->getQuery() // On récupère la requête générée
+            ->getResult() // On exécute la requête et on récupère les résultats. On les retourne sous la forme d'un tableau (qui contient des objets Annonceur)
         ;
     }
-    */
 
     /*
     public function findOneBySomeField($value): ?Annonceur
