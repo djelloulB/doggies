@@ -22,7 +22,7 @@
 								<div class="carousel-inner">
 									{% for image in dog.images %}
 										<div class="carousel-item {% if loop.index == 1 %}active{% endif %}" id="slide{{ loop.index }}">
-											<img class="d-block w-100" src="{{ vich_uploader_asset(annonce.firstImage)}}">
+											<img class="d-block w-100" src="{{ vich_uploader_asset(image)}}">
 										</div>
 
 									{% endfor %}
@@ -53,9 +53,9 @@
 									<div class="me-auto p-2 bd-highlight">
 										<h2 class="card-title">{{ dog.nom }}</h2>
 									</div>
-									{# <div class="p-2 bd-highlight">Flex item</div> #}
+									
 									<div class="p-2 bd-highlight">
-										<a class="btn btn-dark-green" href="#" role="button">Adopter</a>
+										<a class="btn btn-dark-green" href="{{path('demande_adoption', {id:annonce.id} )}}" role="button">Adopter</a>
 									</div>
 								</div>
 								{# {{dump(dog)}} #}

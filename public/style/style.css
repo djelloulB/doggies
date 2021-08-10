@@ -31,13 +31,13 @@ body {
   font-size: 75px;
 }
 h1,
-h2 {
+h2, .title {
   font-family: "Huggable Hedgehogs";
 }
 #logo {
   font-family: "Huggable Hedgehogs";
 }
-h2 {
+h2, h3 {
   font-size: 2.5em;
   color: #97a23b;
 }
@@ -149,4 +149,40 @@ header .btn-green:hover:after {
   border-color: #596d03;
   color: #f7f0f5 !important;
   transition: 0.2s ease-out;
+}
+/**************** Galerie image ****************************/
+.dogImg {
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-bottom: 20px;
+}
+.dogImg:hover {
+  opacity: 0.8;
+  transform: scale(1.009);
+}
+#galleryContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 1s, visibility 1s;
+}
+#galleryContainer img {
+  border: solid 5px var(--white);
+  max-width: 80%;
+  height: auto;
+}
+#galleryContainer.visible {
+  opacity: 1;
+  visibility: visible;
 }

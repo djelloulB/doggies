@@ -2,6 +2,8 @@
 
 namespace App\Repository;
 
+use App\Entity\Adoptant;
+use App\Entity\Annonce;
 use App\Entity\DemandeAdoption;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -22,19 +24,23 @@ class DemandeAdoptionRepository extends ServiceEntityRepository
     // /**
     //  * @return DemandeAdoption[] Returns an array of DemandeAdoption objects
     //  */
-    /*
-    public function findByExampleField($value)
+    
+    public function findByAdoptant(Annonce $annonce,Adoptant $adoptant)
     {
-        return $this->createQueryBuilder('d')
-            ->andWhere('d.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('d.id', 'ASC')
-            ->setMaxResults(10)
+        return $this->createQueryBuilder('demande')
+            ->join('demande.annonce', 'an')
+            ->andWhere('an.id = :annonce')
+            // On donne une valeur au paramètre. Contrairement à PDO, il n'est pas obligatoire de donner une variable ici, vous pourriez mettre une valeur directement.
+            ->setParameter('annonce', $annonce->getId())
+            ->join('demande.adoptants', 'a')
+            ->andWhere('a.id = :adoptant')
+            ->setParameter('adoptant', $adoptant->getId())
+            ->setMaxResults(1)
             ->getQuery()
-            ->getResult()
+            ->getOneOrNullResult()
         ;
     }
-    */
+    
 
     /*
     public function findOneBySomeField($value): ?DemandeAdoption
