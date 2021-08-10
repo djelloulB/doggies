@@ -25,7 +25,12 @@ class DemandeAdoption
     private $annonce;
 
     /**
-     * @ORM\OneToMany(targetEntity=Message::class, mappedBy="demandeAdoption")
+     * @ORM\Column(type="string", length=128)
+     */
+    private $sujet;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Message::class, mappedBy="demandeAdoption",cascade={"persist"})
      */
     private $messages;
 
@@ -110,6 +115,26 @@ class DemandeAdoption
         if ($this->adoptants->removeElement($adoptant)) {
             $adoptant->removeDemandeAdoption($this);
         }
+
+        return $this;
+    }
+
+    /**
+     * Get the value of sujet
+     */ 
+    public function getSujet()
+    {
+        return $this->sujet;
+    }
+
+    /**
+     * Set the value of sujet
+     *
+     * @return  self
+     */ 
+    public function setSujet($sujet)
+    {
+        $this->sujet = $sujet;
 
         return $this;
     }
