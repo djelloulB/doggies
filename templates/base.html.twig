@@ -50,6 +50,12 @@
 										</a>
 									</div>
 								{% endif %}
+								{% if is_granted('ROLE_ADOPTANT') %}
+									<a href="{{path("adoptant", {id:app.user.id} )}}" class="nav-link" aria-current="page">Mon compte
+
+									</a>
+									
+								{% endif %}
 
 
 							</div>
@@ -58,9 +64,14 @@
 
 									<div class="text-center">
 										{% if not app.user %}
-											<a href="{{path('app_login')}}" class="p-0 mx-2 nav-link">
+										<div class="d-flex">
+											<a href="{{path('adoptant_new')}}" class="p-0 mx-2 nav-link">
+												<i class="fas fa-user"></i><br><span class="link-span">S 'inscrire </span>
+											</a> 
+											<a href="{{path('app_login')}}" class="p-0 mx-2 nav-link"> 
 												<i class="fas fa-user"></i><br><span class="link-span">S 'identifier</span>
 											</a>
+										</div>
 										{% else %}
 											<a href="{{path('app_logout')}}" class="p-0 nav-link">
 												<i class="fas fa-sign-out-alt"></i>
