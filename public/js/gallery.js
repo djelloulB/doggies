@@ -1,5 +1,5 @@
 "use strict";
-let galImages = document.querySelectorAll('.dogGallery img');
+let galImages = document.querySelectorAll('.dogImg');
 
 for(let i = 0; i < galImages.length; i++){
     let image = galImages[i];
@@ -7,6 +7,7 @@ for(let i = 0; i < galImages.length; i++){
 }
 
 function showSinglePict(e){
+    
     let image = e.target;
     let imageContainer = document.getElementById('galleryContainer');
     let bigImage = imageContainer.querySelector('img');

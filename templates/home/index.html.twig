@@ -63,13 +63,13 @@
 	<hr>
 	<section id="partenaires" class="py-5">
 		<h2 class="text-center mb-5">Nos partenaires eleveurs et associations</h2>
-		<div class="row mx-auto ">
+		<div class="row mx-auto justify-content-around">
 			{% for key, annonceur in annonceurs %}
 				<div class="col-3 p-0 ms-4 mb-2 card bg-dark text-white">
 					{% if annonceur.image %}
 						<img src="{{ asset(annonceur.image) }}" class="card-img" alt="...">
 					{% endif %}
-					<div class="card-img-overlay">
+					<div class="card-img-overlay bg-overlay">
 						<h5 class="card-title">Annonceur :{{annonceur.categorie.designation}}</h5>
 						<p class="card-text">nombre d'annonce :
 							{{annonceur.annonces|length}}</p>
