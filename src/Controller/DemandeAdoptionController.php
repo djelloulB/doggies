@@ -35,7 +35,7 @@ class DemandeAdoptionController extends AbstractController
         $demande->addAdoptant($this->getUser());
         $form = $this->createForm(DemandeAdoptionType::class, $demande);
         $demandeExistante= $demandeAdoptionRepository->findByAdoptant($annonce,$this->getUser());
-    
+        
         $form->handleRequest($request);
 
         // On regarde si le formulaire a été soumis ET est valide
@@ -43,21 +43,22 @@ class DemandeAdoptionController extends AbstractController
             // On enregistre
             $em->persist($demande);
             $em->flush();
-
+            $this->addFlash('success', 'Demande envoyée ! Vous devez attendre la réponse de l\'annonceur avant de pouvoir le contacter de nouveau ');
             // Une fois que le formulaire est validé,
             // on redirige pour éviter que l'utilisateur ne recharge la page
             // et soumette la même information une seconde fois
             return $this->redirectToRoute('demande_adoption', ['id'=>$annonce->getId()]);
         }
-
-        //$messages =  $messageRepository->findAll();
+ 
+        
+        
         return $this->render('demande_adoption/index.html.twig', [
            
             'form' => $form->createView(),
             'annonce' => $annonce,
             'message' => $message,
             'demandeExistante' => $demandeExistante,
-           // 'messages' => $messages
+            
         ]);
     }
 }

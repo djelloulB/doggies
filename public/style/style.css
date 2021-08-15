@@ -1,11 +1,15 @@
+/* /////////////////////// Fonts //////////////////// */
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 @font-face {
   font-family: "Huggable Hedgehogs";
   src: url("../fonts/Huggable\ Hedgehogs.otf") format("OpenType");
   font-weight: normal;
   font-style: normal;
 }
+
 body {
   font-size: 1.7em;
+  font-family: 'Poppins', sans-serif;
 }
 
 #header {
@@ -31,20 +35,22 @@ body {
   font-size: 75px;
 }
 h1,
-h2, .title {
+.title {
   font-family: "Huggable Hedgehogs";
 }
 #logo {
   font-family: "Huggable Hedgehogs";
 }
+h2 {
+  color: #97a23b;
+}
 h2, h3 {
   font-size: 2.5em;
-  color: #97a23b;
 }
 #header p {
   font-size: 1.9em;
   margin-bottom: 50px;
-  /* box-shadow: rgb(38, 94, 2) 1px 0 10px; */
+ 
 }
 #logo {
   font-size: 1.9em;

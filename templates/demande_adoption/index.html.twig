@@ -30,8 +30,12 @@
 	{% endfor %}
 	
 {% if demandeExistante %}
-<p class='text-center'>Vous devez attendre que l'annonceur vous réponde pour pouvoir lui envoyer un message</p>
 
+{% for message in app.flashes('success') %}
+			<div class="alert alert-success">
+				{{ message }}
+			</div>
+		{% endfor %}
 {% else  %}
 	{{form_start(form)}}
 	{% for messageForm in form.messages %}
@@ -44,14 +48,7 @@
 	{{form_end(form)}}
 {% endif %}
 </section>
-{# <section class="py-5">
-	<h3>Messages precedents</h3>
-  <ol class="list-group list-group-numbered py-2">
-        {% for message in messages %}
-            <li class="list-group-item">{{ message.text }}</li>
-        {% endfor %}
-    </ol>
-</section> #}
+
 
 	 <figure id="galleryContainer"><img src="" alt=""></figure>
 	 

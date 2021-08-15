@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Adoptant;
+use App\Entity\DemandeAdoption;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -22,6 +23,19 @@ class AdoptantRepository extends ServiceEntityRepository
     // /**
     //  * @return Adoptant[] Returns an array of Adoptant objects
     //  */
+
+    public function findBydemande($value)
+    {
+        return $this->createQueryBuilder('a')
+            ->join('a.demandeAdoption', 'de')
+            //->andWhere('de.id = :id')
+            ->setParameter('dem', $value)
+            //->orderBy('a.id', 'ASC')
+            //->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
     /*
     public function findByExampleField($value)
     {
