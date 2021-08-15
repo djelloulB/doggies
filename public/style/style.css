@@ -156,6 +156,12 @@ header .btn-green:hover:after {
   color: #f7f0f5 !important;
   transition: 0.2s ease-out;
 }
+/* ************** Annonceur *******************************/
+
+.bg-overlay{
+  background-color: #00000070;;
+}
+
 /**************** Galerie image ****************************/
 .dogImg {
   border-radius: 5px;
