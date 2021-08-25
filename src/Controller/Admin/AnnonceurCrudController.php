@@ -14,7 +14,7 @@ class AnnonceurCrudController extends AbstractCrudController
         return Annonceur::class;
     }
 
-    
+
     public function configureFields(string $pageName): iterable
     {
         return [
@@ -29,5 +29,4 @@ class AnnonceurCrudController extends AbstractCrudController
             TextField::new('departement'),
         ];
     }
-    
 }

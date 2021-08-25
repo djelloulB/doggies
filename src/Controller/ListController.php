@@ -24,31 +24,31 @@ class ListController extends AbstractController
 
 
 
-    // public function index(): Response
-    // {
-        
-    //     $dogs = [];
-        
-    //     for($i= 0 ; $i <=10 ; $i++){
+        // public function index(): Response
+        // {
 
-    //         $dog = new Dog();
-    //         $dog->setNom('Arturo');
-    //         $dog->setIfLof(1);
-    //         $dog->setAntecedents('Arturo est un ancien chien de cirque. ');
-    //         $image = new Image();
-    //         $image->setUrlImage('img/Arturo/arthuro.jpg');
-    //         $dog->addImage($image);
-            
-    //         $dogs[] = $dog;
-    //     }
-    //     $Annonces = [];
-    //     for($i= 0 ; $i <10 ; $i++){
-    //         $annonce = new Annonce();
-    //         $annonce->setTitre('Arturo');
-    //         $annonce->setDateMAJ(new \DateTime());
-    //         $annonce->addDog($dogs[$i]);
-    //         $Annonces[] = $annonce;
-    //     }
+        //     $dogs = [];
+
+        //     for($i= 0 ; $i <=10 ; $i++){
+
+        //         $dog = new Dog();
+        //         $dog->setNom('Arturo');
+        //         $dog->setIfLof(1);
+        //         $dog->setAntecedents('Arturo est un ancien chien de cirque. ');
+        //         $image = new Image();
+        //         $image->setUrlImage('img/Arturo/arthuro.jpg');
+        //         $dog->addImage($image);
+
+        //         $dogs[] = $dog;
+        //     }
+        //     $Annonces = [];
+        //     for($i= 0 ; $i <10 ; $i++){
+        //         $annonce = new Annonce();
+        //         $annonce->setTitre('Arturo');
+        //         $annonce->setDateMAJ(new \DateTime());
+        //         $annonce->addDog($dogs[$i]);
+        //         $Annonces[] = $annonce;
+        //     }
 
         return $this->render('list/index.html.twig', [
             'controller_name' => 'ListController',

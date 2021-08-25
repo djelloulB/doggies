@@ -25,17 +25,16 @@ class DemandeAdoptionController extends AbstractController
     /**
      * @Route("/demande-adoption/{id}", requirements={"id"="\d+"}, name="demande_adoption")
      */
-    public function index(MessageRepository $messageRepository,DemandeAdoptionRepository $demandeAdoptionRepository,  Request $request, EntityManagerInterface $em, Annonce $annonce): Response
+    public function index(MessageRepository $messageRepository, DemandeAdoptionRepository $demandeAdoptionRepository, Request $request, EntityManagerInterface $em, Annonce $annonce): Response
     {
-
         $demande = new DemandeAdoption();
         $message = new Message();
         $demande->addMessage($message);
         $demande->setAnnonce($annonce);
         $demande->addAdoptant($this->getUser());
         $form = $this->createForm(DemandeAdoptionType::class, $demande);
-        $demandeExistante= $demandeAdoptionRepository->findByAdoptant($annonce,$this->getUser());
-        
+        $demandeExistante= $demandeAdoptionRepository->findByAdoptant($annonce, $this->getUser());
+
         $form->handleRequest($request);
 
         // On regarde si le formulaire a été soumis ET est valide
@@ -49,16 +48,16 @@ class DemandeAdoptionController extends AbstractController
             // et soumette la même information une seconde fois
             return $this->redirectToRoute('demande_adoption', ['id'=>$annonce->getId()]);
         }
- 
-        
-        
+
+
+
         return $this->render('demande_adoption/index.html.twig', [
-           
+
             'form' => $form->createView(),
             'annonce' => $annonce,
             'message' => $message,
             'demandeExistante' => $demandeExistante,
-            
+
         ]);
     }
 }

@@ -17,8 +17,8 @@ class AnnonceurController extends AbstractController
     /**
      * @Route("/annonceur", name="annonceur_index")
      */
-    public function index(AnnonceRepository $annonceRepository ): Response
-    { 
+    public function index(AnnonceRepository $annonceRepository): Response
+    {
         /** @var Annonceur $user */
         $user = $this->getUser();
         $annonces = $user->getAnnonces();
@@ -27,7 +27,7 @@ class AnnonceurController extends AbstractController
         //     'annonceur' => $user,
         // ]);
 
-        
+
         return $this->render('annonceur/index.html.twig', [
             'annonces' => $annonces,
         ]);

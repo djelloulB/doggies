@@ -12,7 +12,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Adoptant extends Utilisateur
 {
-
     /**
      * @ORM\ManyToMany(targetEntity=DemandeAdoption::class, inversedBy="adoptants")
      */

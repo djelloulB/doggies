@@ -15,7 +15,7 @@ class AdoptantCrudController extends AbstractCrudController
         return Adoptant::class;
     }
 
-    
+
     public function configureFields(string $pageName): iterable
     {
         return [
@@ -28,8 +28,7 @@ class AdoptantCrudController extends AbstractCrudController
             TextField::new('telephone'),
             TextField::new('ville'),
             TextField::new('departement'),
-            
+
         ];
     }
-
 }

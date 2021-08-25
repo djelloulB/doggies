@@ -50,7 +50,7 @@ class UtilisateurRepository extends ServiceEntityRepository
     }
     */
 
-      /**
+    /**
      * Used to upgrade (rehash) the user's password automatically over time.
      */
     public function upgradePassword(PasswordAuthenticatedUserInterface $user, string $newHashedPassword): void

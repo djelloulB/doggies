@@ -11,8 +11,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 
-
-
 class ContactController extends AbstractController
 {
     /**
@@ -24,11 +22,11 @@ class ContactController extends AbstractController
         // $this->addFlash('success', 'Message de test');
         $contact = new Contact();
         $form= $this->createForm(ContactType::class, $contact);
-      
+
 
         $form->handleRequest($request);
 
-        if($form->isSubmitted() && $form->isValid()){
+        if ($form->isSubmitted() && $form->isValid()) {
             $em->persist($contact);
             $em->flush();
 
@@ -36,7 +34,7 @@ class ContactController extends AbstractController
 
             return $this-> redirectToRoute('contact');
         }
-       
+
 
         return $this->render('contact/index.html.twig', [
             // 'controller_name' => 'ContactController',

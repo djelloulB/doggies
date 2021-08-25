@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controller;
+
 use App\Entity\Image;
 use App\Form\ImageType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -23,16 +24,15 @@ class ImageController extends AbstractController
         return $this->render('image/index', [
             'controller_name' => 'ImageController',
         ]);
-    } // cette function sert à afficher la liste des images 
+    } // cette function sert à afficher la liste des images
 
     /**
      * @Route("/image/new", name="image_new")
      */
     public function form(Request $request, EntityManagerInterface $em): Response
     {
-
         $image = new Image();
-        
+
         $form = $this->createForm(ImageType::class, $image);
         $form->handleRequest($request);//pour gerer la soumission du formulaire
 

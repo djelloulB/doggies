@@ -36,20 +36,18 @@ class AdminController extends AbstractDashboardController
     {
         return Dashboard::new()
             ->setTitle('Doggies');
-            
-            
     }
-    
+
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linktoDashboard('Dashboard', 'fas fa-tools');
-        
-        yield MenuItem::linkToUrl('View HomePage' , 'fa fa-home','/')->setLinkTarget('_blank');
+
+        yield MenuItem::linkToUrl('View HomePage', 'fa fa-home', '/')->setLinkTarget('_blank');
         yield MenuItem::linkToCrud('Races de chien', 'fas fa-list', Breed::class);
         yield MenuItem::linkToCrud('Catégories', 'fas fa-list', Categorie::class);
         yield MenuItem::linkToCrud('Anonceurs', 'fas fa-list', Annonceur::class);
         yield MenuItem::linkToCrud('Adoptant', 'fas fa-list', Adoptant::class);
         yield MenuItem::linkToCrud('Administrateur', 'fas fa-list', Admin::class);
-        yield MenuItem::linkToCrud('Messages', 'fas fa-envelope', Contact::class );
+        yield MenuItem::linkToCrud('Messages', 'fas fa-envelope', Contact::class);
     }
 }

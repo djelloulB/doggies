@@ -51,10 +51,10 @@ class AppCustomAuthenticator extends AbstractLoginFormAuthenticator
         if ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) {
             return new RedirectResponse($targetPath);
         }
-        if($token->getUser() instanceof Admin){
+        if ($token->getUser() instanceof Admin) {
             return new RedirectResponse($this->urlGenerator->generate('admin_dashboard'));
         }
-        if ($token->getUser() instanceof Annonceur){
+        if ($token->getUser() instanceof Annonceur) {
             return new RedirectResponse($this->urlGenerator->generate('annonceur_index'));
         }
         // For example:

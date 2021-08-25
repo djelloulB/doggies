@@ -25,12 +25,12 @@ class AdoptantController extends AbstractController
      * @IsGranted("ROLE_ADOPTANT")
      * @Route("/adoptant/{id}", name="adoptant")
      */
-    public function index( $id, Annonce $annonce, DemandeAdoptionRepository $demandeAdoptionRepository, MessageRepository $messageRepository,AdoptantRepository $adoptantRepository): Response
+    public function index($id, Annonce $annonce, DemandeAdoptionRepository $demandeAdoptionRepository, MessageRepository $messageRepository, AdoptantRepository $adoptantRepository): Response
     {
         // $demandeExistante= $demandeAdoptionRepository->findByAdoptant($annonce,$this->getUser());
-        
-       $messages =  $messageRepository->findAll();
-               //dd($demandeExistante);
+
+        $messages =  $messageRepository->findAll();
+        //dd($demandeExistante);
         // je recupere l'adoptant en session
         //$adoptant = $this->getDoctrine()->getRepository(Adoptant::class)->findBy(["id"=> $id]);
         // foreach($adoptant as $a){
@@ -40,8 +40,8 @@ class AdoptantController extends AbstractController
         //je recupere la demande d'adoption
         //$demande = $adoptantRepository->findBydemande($adoptant);
 
-        
-            
+
+
 
         //$x= $this->getDoctrine()->getRepository(DemandeAdoption::class)->findBy(["messages"=>$idAdoptant]);
         //$userMessages =  $demandeAdoptionRepository->findDemandesByAnnonceAndAdoptant($id);
@@ -50,22 +50,22 @@ class AdoptantController extends AbstractController
         //$userMessages = findByUser()
         return $this->render('adoptant/index.html.twig', [
             'messages' => $messages,
-            
+
         ]);
     }
 
-/**
-     * @Route("/adoptant_new", name="adoptant_new")
-     */
+    /**
+         * @Route("/adoptant_new", name="adoptant_new")
+         */
     public function new(Request $request, EntityManagerInterface $em, UserPasswordHasherInterface $a): Response
     {
         $adoptant = new Adoptant();
         $form = $this->createForm(AdoptantType::class, $adoptant);
-        
+
 
         $form->handleRequest($request);
 
-        if($form->isSubmitted() && $form->isValid()){
+        if ($form->isSubmitted() && $form->isValid()) {
             $mdp = $a->hashPassword($adoptant, $adoptant->getPlainPassword());
             $adoptant->setMotDePasse($mdp);
             $em->persist($adoptant);
@@ -76,7 +76,7 @@ class AdoptantController extends AbstractController
             return $this-> redirectToRoute('home_index');
         }
 
-        return $this->render('adoptant/new.html.twig', [    
+        return $this->render('adoptant/new.html.twig', [
             'form' => $form->createView(),
         ]);
     }

@@ -14,7 +14,8 @@ class UserUpdateSubscriber implements EventSubscriberInterface
      * @var UserPasswordHasherInterface
      */
     private $encoder;
-    public function __construct(UserPasswordHasherInterface $encoder){
+    public function __construct(UserPasswordHasherInterface $encoder)
+    {
         $this->encoder =$encoder;
     }
 
@@ -24,12 +25,12 @@ class UserUpdateSubscriber implements EventSubscriberInterface
     public function onBeforeEntityPersistedEvent($event)
     {
         $user = $event->getEntityInstance();
-        if (!$user instanceof Utilisateur){
+        if (!$user instanceof Utilisateur) {
             return;
         }
 
 
-        if(empty($user->getPlainPassword())){
+        if (empty($user->getPlainPassword())) {
             return;
         }
         //sinon encoder le mot de passe

@@ -17,14 +17,14 @@ class DetailAnnonceController extends AbstractController
 {
     // ici le requirement est le 2éme parametre qui oblige a avoir un chiffre > 0
     /**
-     * @Route("/annonce/{id}", requirements={"id"="\d+"}, name="detailAnnonce") 
+     * @Route("/annonce/{id}", requirements={"id"="\d+"}, name="detailAnnonce")
      */
     public function index(Annonce $annonce): Response
     {
         $annonceur = $annonce->getAnnonceur();
 
         // $dogs = [];
-        
+
         // for($i= 0 ; $i <=1 ; $i++){
 
         //     $dog = new Dog();
@@ -34,7 +34,7 @@ class DetailAnnonceController extends AbstractController
         //     $image = new Image();
         //     $image->setUrlImage('img/Arturo/arthuro.jpg');
         //     $dog->addImage($image);
-            
+
         //     $dogs[] = $dog;
         // }
         // $Annonces = [];

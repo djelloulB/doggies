@@ -22,7 +22,7 @@ class MessageRepository extends ServiceEntityRepository
     // /**
     //  * @return Message[] Returns an array of Message objects
     //  */
-    
+
     public function findByDemande($value)
     {
         return $this->createQueryBuilder('m')
@@ -48,7 +48,7 @@ class MessageRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
-    
+
     /*
     public function findOneBySomeField($value): ?Message
     {

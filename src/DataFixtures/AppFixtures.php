@@ -77,15 +77,15 @@ class AppFixtures extends Fixture
         // }
 
 
-            ////////////BREED////////////
-            $bs = [];
-            $breeds = ['Caniche','Autre','Berger','Berger belge Malinois','Bouledogue francais','Chien loup de Saarloos','Berger picard','Berger des Pyrenees','Labrador', 'Golden Retriever', 'Berger Allemand', 'Cavalier King Charles', 'Beagle', 'Husky de Sibérie', 'Teckel', 'Bouvier Bernois', 'Jack Russell', 'Berger Blanc Suisse', 'Shih Tzu', 'Saint-Bernard', 'Malamute de Alaska'];
-            foreach ($breeds as $b) {
-                $breed = new Breed();
-                $breed->setNom($b);
-                $manager->persist($breed);
-                $bs[] = $breed;
-            }
+        ////////////BREED////////////
+        $bs = [];
+        $breeds = ['Caniche','Autre','Berger','Berger belge Malinois','Bouledogue francais','Chien loup de Saarloos','Berger picard','Berger des Pyrenees','Labrador', 'Golden Retriever', 'Berger Allemand', 'Cavalier King Charles', 'Beagle', 'Husky de Sibérie', 'Teckel', 'Bouvier Bernois', 'Jack Russell', 'Berger Blanc Suisse', 'Shih Tzu', 'Saint-Bernard', 'Malamute de Alaska'];
+        foreach ($breeds as $b) {
+            $breed = new Breed();
+            $breed->setNom($b);
+            $manager->persist($breed);
+            $bs[] = $breed;
+        }
 
         ////////////IMAGE////////////
         $img = [];
@@ -98,7 +98,7 @@ class AppFixtures extends Fixture
             ['img\PYPPERS\507330_0.jpg','img\PYPPERS\507330_1.jpg','img\PYPPERS\507330_2.jpg','img\PYPPERS\507330_3.jpg','img\PYPPERS\507330_4.jpg'],
             ['img\SAYA\274263_0.jpg','img\SAYA\274263_3.jpg','img\SAYA\274263_4.jpg','img\SAYA\274263_5.jpg','img\SAYA\274263_6.jpg'],
             ['img\SHIPER\485110_0.jpg','img\SHIPER\485110_1.jpg','img\SHIPER\485110_2.jpg','img\SHIPER\485110_3.jpg','img\SHIPER\485110.jpg']
-           
+
         ];
         // foreach ($images as $imgs) {
         //     foreach ($imgs as $i) {
@@ -126,7 +126,7 @@ class AppFixtures extends Fixture
         [$bs[6],'Saya',"gardien d'athéna","Saya a été retirée pour mauvais traitements, elle vivait dans une cave et n'a donc jamais connu le monde extérieur. Son passé très difficile fait qu'elle est très réactive à toute nouvelle stimulation (animaux, inconnus, bruits, gestes brusques...), et elle aura besoin de maîtres avertis connaissant bien les chiens. Et lorsqu'elle aura confiance en vous, vous découvrirez une chienne hyper câline, obéissante et tellement attachante! Saya ne s'entend pas avec les autres animaux et devra donc être le seul animal du foyer. N'hésitez pas à contacter le refuge pour avoir plus d'informations sur la belle Saya.",false, true, false],
 
         [$bs[7],'Shiper','arrête de chiper',"Notre gentil Shiper est le doyen du refuge, c'est un chien au regard attendrissant. Il n'est plus tout jeune et la vie au refuge ne lui convient pas. Un environnement calme sans enfant sera nécessaire. Il n'aime pas la contrainte et aime avoir sa tranquillité. Il a été trouvé errant de ce fait nous ne connaissons pas son passé. Venez vite le rencontrer et lui offrir sa chance , l'hiver au refuge est rude pour nos papies et mamies.",false, true, true]];
-  
+
         foreach ($dogs as $key => $d) {
             $dog = new Dog();
             $dog->addBreed($d[0]);
@@ -157,7 +157,7 @@ class AppFixtures extends Fixture
             $annonces[] = [$do[$i],'Annonce'.$i,new \DateTime("now")];
         }
 
-    
+
         foreach ($annonces as $ann) {
             $annonce = new Annonce();
             $annonce->addDog($ann[0]);
@@ -169,7 +169,7 @@ class AppFixtures extends Fixture
 
         ////////////ANNONCEUR////////////
         $annonceurs = array(
-            1 => array (
+            1 => array(
                 "image"  => 'https://www.wikichien.fr/wp-content/uploads/sites/4/60cd9e2dbe351-1024x576.jpeg',
                 "nom" => 'CHARRETTE ',
                 "prenom"   => 'JANINE',
@@ -179,8 +179,8 @@ class AppFixtures extends Fixture
                 'ville'=> 'Saint-Paul-les-Fonts',
                 'telephone'=> '0608900580',
                 'departement' => 'Gard',
-                
-            ),2 => array (
+
+            ),2 => array(
                 "image"  => 'https://www.wikichien.fr/wp-content/uploads/sites/4/lac_jpeg-400x298.jpg',
                 "nom" => 'GAUBERT',
                 "prenom"   => 'NICOLAS',
@@ -190,9 +190,9 @@ class AppFixtures extends Fixture
                 'ville'=> 'BAZET',
                 'telephone'=> '0630154560',
                 'departement' => 'Hautes-Pyrénées',
-                
-            ), 3 =>     
-            array (
+
+            ), 3 =>
+            array(
                 "image"  => 'https://v.fastcdn.co/u/dacf0b1a/50971768-0-50436040-0-SPA-1.png',
                 "nom" => 'Refuge de Lyon-Marennes',
                 "prenom"   => 'Pierre',
@@ -205,9 +205,9 @@ class AppFixtures extends Fixture
             )
         );
         $listAnnonceurs = [];
-        foreach($annonceurs as $annonceur) {
+        foreach ($annonceurs as $annonceur) {
             $a = new Annonceur();
-           
+
             $a->setNom($annonceur["nom"]);
             $a->setPrenom($annonceur["prenom"]);
             $a->setTelephone($annonceur["telephone"]);
@@ -215,35 +215,35 @@ class AppFixtures extends Fixture
             $a->setDepartement($annonceur["departement"]);
             $a->setResidence($annonceur["residence"]);
             $a->setEmail($annonceur["email"]);
-            $a->setMotDePasse($this->passwordHasher->hashPassword($a,'123'));
+            $a->setMotDePasse($this->passwordHasher->hashPassword($a, '123'));
             $a->setImage($annonceur["image"]);
             //$manager est une variable de type entity manager
             $manager->persist($a);
             $listAnnonceurs[] = $a;
         }
-       
+
 
         ////////////CATEGORIE////////////
 
         $catego = [];
-            //On creer un objet categorie
-            $categorie = new Categorie();
-            //On va parcourir nos annonceurs pour leur affecter une categorie
-            foreach($listAnnonceurs as $annonceur){
-                $annonceur->setCategorie($categorie);
-            }
-            //on ajoute une designation a notre objet categorie
-            $categorie->setDesignation('SPA');
-            $manager->persist($categorie);
-            $catego[] = $categorie;
-     
+        //On creer un objet categorie
+        $categorie = new Categorie();
+        //On va parcourir nos annonceurs pour leur affecter une categorie
+        foreach ($listAnnonceurs as $annonceur) {
+            $annonceur->setCategorie($categorie);
+        }
+        //on ajoute une designation a notre objet categorie
+        $categorie->setDesignation('SPA');
+        $manager->persist($categorie);
+        $catego[] = $categorie;
+
 
         ////////////ADMIN////////////
 
-            $ad = [];
-            $admins = [['Melanger','Antoine','0686822860','Aix-en-Provence','Bouche du Rhone','les palmiers','antoine.melanger@laposte.net','123'],['Derieux','Yannick','0472392832','Oullins','Rhône','Irini','yderieux@stagiaire-humanbooster.com','123'],['Berabez','Djelloul','0426303122','Beni Djellil','bejaia','village beni djellil','djelloul.be@gmail.com','123']
+        $ad = [];
+        $admins = [['Melanger','Antoine','0686822860','Aix-en-Provence','Bouche du Rhone','les palmiers','antoine.melanger@laposte.net','123'],['Derieux','Yannick','0472392832','Oullins','Rhône','Irini','yderieux@stagiaire-humanbooster.com','123'],['Berabez','Djelloul','0426303122','Beni Djellil','bejaia','village beni djellil','djelloul.be@gmail.com','123']
         ];
-            foreach ($admins as $a) {
+        foreach ($admins as $a) {
             $admin = new Admin();
             $admin->setNom($a[0]);
             $admin->setPrenom($a[1]);
@@ -252,7 +252,7 @@ class AppFixtures extends Fixture
             $admin->setDepartement($a[4]);
             $admin->setResidence($a[5]);
             $admin->setEmail($a[6]);
-            $mdp = $this->passwordHasher->hashPassword($admin,$a[7]);
+            $mdp = $this->passwordHasher->hashPassword($admin, $a[7]);
             $admin->setMotDePasse($mdp);
             $manager->persist($admin);
         }

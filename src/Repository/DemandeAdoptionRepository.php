@@ -25,7 +25,7 @@ class DemandeAdoptionRepository extends ServiceEntityRepository
     // /**
     //  * @return DemandeAdoption[] Returns an array of DemandeAdoption objects
     //  */
-    public function findByAdoptant(Annonce $annonce,Adoptant $adoptant)
+    public function findByAdoptant(Annonce $annonce, Adoptant $adoptant)
     {
         return $this->createQueryBuilder('demande')
             ->join('demande.annonce', 'an')
@@ -40,10 +40,10 @@ class DemandeAdoptionRepository extends ServiceEntityRepository
             ->getOneOrNullResult()
         ;
     }
-     // /**
+    // /**
     //  * @return DemandeAdoption[] Returns an array of DemandeAdoption objects
     //  */
-    public function findByMessages( Adoptant $adoptant)
+    public function findByMessages(Adoptant $adoptant)
     {
         return $this->createQueryBuilder('dem')
             ->join('dem.messages', 'mess')
@@ -58,7 +58,7 @@ class DemandeAdoptionRepository extends ServiceEntityRepository
             ->getOneOrNullResult()
         ;
     }
-    
+
     public function findMessageByAdoptant(Adoptant $addoptant): ?DemandeAdoption
     {
         return $this->createQueryBuilder('d')
@@ -68,10 +68,11 @@ class DemandeAdoptionRepository extends ServiceEntityRepository
             ->getOneOrNullResult()
         ;
     }
-    public function findDemandesByAnnonceAndAdoptant( $id){
+    public function findDemandesByAnnonceAndAdoptant($id)
+    {
         return $this->createQueryBuilder('d')
             ->join('d.adoptants', 'adoptant')
-            ->join('d.messages','messages' )
+            ->join('d.messages', 'messages')
             ->andWhere('adoptant.id = :idAdoptant')
             ->setParameter('idAdoptant', $id)
             ->getQuery()

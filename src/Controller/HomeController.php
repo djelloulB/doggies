@@ -2,8 +2,6 @@
 
 namespace App\Controller;
 
-
-
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -25,10 +23,10 @@ class HomeController extends AbstractController
     {
         $annonces = $annonceRepository->findBy([], ['dateMAJ' =>'DESC'], 5);
         $annonceurs = $annonceurRepository->findByDateMAJ();
-    
 
-                // $dogs = [];
-        
+
+        // $dogs = [];
+
         // for($i= 0 ; $i <=5 ; $i++){
 
         //     $dog = new Dog();
@@ -38,7 +36,7 @@ class HomeController extends AbstractController
         //     $image = new Image();
         //     $image->setUrlImage('img/Arturo/arthuro.jpg');
         //     $dog->addImage($image);
-            
+
         //     $dogs[] = $dog;
         // }
         // $Annonces = [];
@@ -59,7 +57,7 @@ class HomeController extends AbstractController
         // $Annonceurs[] = $annonceur;
 
         return $this->render('home/index.html.twig', [
-            
+
             'annonces' => $annonces,
             'annonceurs' => $annonceurs,
         ]);

@@ -161,8 +161,8 @@ class Annonce
         $this->annonceur = $annonceur;
 
         return $this;
-    }  
-    
+    }
+
     public function getFirstImage(): ?Image
     {
         if ($this->getDogs()->count() <= 0) {

@@ -15,14 +15,13 @@ class BreedCrudController extends AbstractCrudController
         return Breed::class;
     }
 
-    
+
     public function configureFields(string $pageName): iterable
     {
         return [
             IdField::new('id')->hideOnForm(),
             TextField::new('nom'),
-            
+
         ];
     }
-    
 }

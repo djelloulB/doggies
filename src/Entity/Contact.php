@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Entity;
+
 use Symfony\Component\Validator\Constraints as Assert;
 use App\Repository\ContactRepository;
 use Doctrine\ORM\Mapping as ORM;
@@ -19,16 +20,16 @@ class Contact
 
     /**
      * @ORM\Column(type="string", length=128)
-     * 
+     *
      * @Assert\Length(
      * min = 1,)
-     * 
+     *
      */
     private $prenom;
 
     /**
      * @ORM\Column(type="string", length=128)
-     * 
+     *
      * @Assert\Length(
      *      min = 1,)
      */
@@ -36,30 +37,30 @@ class Contact
 
     /**
      * @ORM\Column(type="string", length=255)
-     * 
+     *
      * @Assert\Email(
      * message = "email invalide."
      * )
-     * 
+     *
      */
     private $email;
 
     /**
      * @ORM\Column(type="string", length=128)
-     * 
+     *
     * @Assert\Length(
      * min = 1,)
-     * 
+     *
      */
     private $sujet;
 
     /**
      * @ORM\Column(type="text")
-     * 
+     *
      * @Assert\Length(
      * min = 1,
      * max = 1500,)
-     * 
+     *
      */
     private $message;
 

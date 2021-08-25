@@ -121,7 +121,7 @@ class DemandeAdoption
 
     /**
      * Get the value of sujet
-     */ 
+     */
     public function getSujet()
     {
         return $this->sujet;
@@ -131,7 +131,7 @@ class DemandeAdoption
      * Set the value of sujet
      *
      * @return  self
-     */ 
+     */
     public function setSujet($sujet)
     {
         $this->sujet = $sujet;

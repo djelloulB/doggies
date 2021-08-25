@@ -20,7 +20,7 @@ class AdoptantType extends AbstractType
             ->add('telephone')
             ->add('ville')
             ->add('departement')
-            
+
         ;
     }
 
