@@ -57,7 +57,7 @@ jobs:
               chmod a+x ./php-cs-fixer.phar
 
           - name: Run PHP CS Fixer check
-            run: ./php-cs-fixer.phar fix src --dry-run --diff
+            run: ./php-cs-fixer-v3.phar fix src --dry-run --diff
 
 
         
