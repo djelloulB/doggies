@@ -39,5 +39,9 @@ jobs:
             # On lance une commande (run) pour installer la librairie bats
             - run: composer install
             # On lance la commande 
+            - run: php bin/console doctrine:database:create
+            - run: php bin/console make:entity
+            - run: php bin/console make:migration
+            - run: php bin/console doctrine:migrations:migrate -n
             
         
