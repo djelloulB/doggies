@@ -1,0 +1,43 @@
+name: CI/Pull Request
+
+on:
+  push
+
+# On liste les Jobs à effectuer
+jobs:
+    # On a un seul job : check-bats-version qui va préparer un projet nodejs 
+    # et exécuter une commande
+    container-job:
+        # Ce job est exécuté dans une machine virtuelle Ubuntu
+        # Dans sa dernière version.
+        # Pour l'exécuter dans une version précise (disons 19.04), il aurait fallu écrire
+        # runs-on: ubuntu-19.04
+        runs-on: ubuntu-latest
+        # On définit les steps (la liste des actions) à exécuter
+        container: php:7.4.9
+        
+        services:
+      # On donne un nom à notre service, qu'on utilise dans notre .env 
+      # (c'est l'adresse de la BdD)
+          db:
+        # On va utiliser l'image mysql (image officielle) en version 5.7
+            image: mysql:5.7
+        # On passe des variables d'environnement, pour configurer notre conteneur
+            env:
+              MYSQL_ROOT_PASSWORD: pass 
+              MYSQL_DATABASE: doggies 
+      
+        
+        
+        steps:
+            # On appelle une action déjà définie par la communauté (noter le mot-clé uses)
+            # Ici, c'est une action qui va récupérer le code (via git clone, a priori) et nous mettre sur la bonne branche
+            - uses: actions/checkout@v2
+            - run: cp .env.ci .env.local
+            # Une action pour préparer un environnement nodejs
+            
+            # On lance une commande (run) pour installer la librairie bats
+            - run: composer install
+            # On lance la commande 
+            
+        
