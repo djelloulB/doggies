@@ -14,7 +14,7 @@ jobs:
         # runs-on: ubuntu-19.04
         runs-on: ubuntu-latest
         # On définit les steps (la liste des actions) à exécuter
-        container: php:7.4.9
+        
         
         services:
       # On donne un nom à notre service, qu'on utilise dans notre .env 
@@ -26,8 +26,6 @@ jobs:
             env:
               MYSQL_ROOT_PASSWORD: pass 
               MYSQL_DATABASE: doggies 
-      
-        
         
         steps:
             # On appelle une action déjà définie par la communauté (noter le mot-clé uses)
