@@ -38,5 +38,9 @@ jobs:
             - run: composer install
             # On lance la commande 
             - run: php bin/console doctrine:migrations:migrate -n
+
+            - run: php bin/console make:fixtures
+            - run: php bin/console doctrine:fixtures:load
+            
             
         
