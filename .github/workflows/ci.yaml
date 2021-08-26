@@ -26,7 +26,7 @@ jobs:
 
       - name: Cache Composer packages
         run: cp .env.ci .env.local
-        uses: action/cache@v2
+      - uses: action/cache@v2
         with:
           path: vendor
           key: ${{ runner.os}}-php${{ hashFiles('**/composer.lock')}}
