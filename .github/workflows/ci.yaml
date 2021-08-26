@@ -50,7 +50,7 @@ jobs:
 
           - name: Set correct env file
             run: cp .env.ci .env.local
-
+          - run: composer install
           - name: Install PHP CS Fixer
             run: |
                   curl -L https://cs.symfony.com/download/php-cs-fixer-v3.phar -o php-cs-fixer-v3.phar
