@@ -20,7 +20,7 @@ class UserUpdateSubscriber implements EventSubscriberInterface
     }
 
     /**
-     * @param BeforeEntityPersistedEvent ou BeforeEntityUpdatedEvent  $event
+     * @param BeforeEntityPersistedEvent|BeforeEntityUpdatedEvent  $event
      */
     public function onBeforeEntityPersistedEvent($event)
     {
