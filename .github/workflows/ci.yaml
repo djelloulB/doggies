@@ -28,7 +28,7 @@ jobs:
 
     steps:
       # On appelle une action déjà définie par la communauté (noter le mot-clé uses)
-      # Ici, c'est une action qui va récupérer le code (via git clone, a priori) et nous mettre sur la bonne branche
+      # Ici, c'est une action qui va récupérer le code (via git clone, a priori) et nous mettre sur la bonne branche ,
       - uses: actions/checkout@v2
       - run: cp .env.ci .env.local
       # Une action pour préparer un environnement nodejs
