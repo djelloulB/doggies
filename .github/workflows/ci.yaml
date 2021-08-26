@@ -58,13 +58,13 @@ jobs:
             run: ./php-cs-fixer-v3.phar fix src --dry-run --diff
 
           - name: Run yaml files checking
-          - run: php bin/console lint:yaml config translations
+            run: php bin/console lint:yaml config translations
 
           - name: Run twig templates checking
-          - run: php bin/console lint:twig templates
+            run: php bin/console lint:twig templates
 
           - name: Run phpstan analyse
-          - run: php vendor/phpstan/phpstan/phpstan.phar analyse
+            run: php vendor/phpstan/phpstan/phpstan.phar analyse
 
 
 
