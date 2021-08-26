@@ -63,7 +63,7 @@ jobs:
           - name: Run twig templates checking
           - run: php bin/console lint:twig templates
 
-          - name: Run phpstan.phar analyse
+          - name: Run phpstan analyse
           - run: php vendor/phpstan/phpstan/phpstan.phar analyse
 
 
