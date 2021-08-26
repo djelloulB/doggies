@@ -52,9 +52,7 @@ jobs:
             run: cp .env.ci .env.local
 
           - name: Install PHP CS Fixer
-            run: |
-              curl -L https://cs.symfony.com/download/php-cs-fixer-v3.phar -o php-cs-fixer-v3.phar
-              chmod a+x ./php-cs-fixer-v3.phar
+            run: curl -L https://cs.symfony.com/download/php-cs-fixer-v3.phar -o php-cs-fixer-v3.phar chmod a+x ./php-cs-fixer-v3.phar
 
           - name: Run PHP CS Fixer check
             run: ./php-cs-fixer-v3.phar fix src --dry-run --diff
