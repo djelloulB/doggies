@@ -1,57 +1,67 @@
-name: PHP Composer
+name: CI/Pull Request
 
-on: [push]
+on: push
 
+# On liste les Jobs à effectuer
 jobs:
+  # On a un seul job : check-bats-version qui va préparer un projet nodejs
+  # et exécuter une commande
   container-job:
+    # Ce job est exécuté dans une machine virtuelle Ubuntu
+    # Dans sa dernière version.
+    # Pour l'exécuter dans une version précise (disons 19.04), il aurait fallu écrire
+    # runs-on: ubuntu-19.04
     runs-on: ubuntu-latest
+    # On définit les steps (la liste des actions) à exécuter
     container: drakona/php:7.4-ci
 
     services:
+      # On donne un nom à notre service, qu'on utilise dans notre .env
+      # (c'est l'adresse de la BdD)
       db:
+        # On va utiliser l'image mysql (image officielle) en version 5.7
         image: mysql:5.7
-
+        # On passe des variables d'environnement, pour configurer notre conteneur
         env:
           MYSQL_ROOT_PASSWORD: pass
           MYSQL_DATABASE: doggies
 
     steps:
+      # On appelle une action déjà définie par la communauté (noter le mot-clé uses)
+      # Ici, c'est une action qui va récupérer le code (via git clone, a priori) et nous mettre sur la bonne branche
       - uses: actions/checkout@v2
-      - name: Set correct env file
-        run: cp .env.ci .env.local
+      - run: cp .env.ci .env.local
+      # Une action pour préparer un environnement nodejs
 
-      - name: Validate composer.json and cmposer.lock
-        run: composer validate --strict
+      # On lance une commande (run) pour installer la librairie bats
+      - run: composer install
+      # On lance la commande
+      - run: php bin/console doctrine:migrations:migrate -n
 
-      - name: Cache Composer packages
-        run: cp .env.ci .env.local
-      - uses: action/cache@v2
-        with:
-          path: vendor
-          key: ${{ runner.os}}-php${{ hashFiles('**/composer.lock')}}
-          restore-keys: |
-            ${{ runner.os }}-php-
-
-      - name: Install dependencies
-        run: composer install --prefer-dist --no-progress
-
-      - name: Load fixtures
-        run: php bin/console doctrine:fixtures:load -n
+      - run: php bin/console doctrine:fixtures:load
 
   analysis:
     runs-on: ubuntu-latest
-    container: drakona/php:7.4-ci
 
     steps:
       - uses: actions/checkout@v2
 
       - name: Set correct env file
         run: cp .env.ci .env.local
-
+      - run: composer install
       - name: Install PHP CS Fixer
         run: |
-          curl -L https://cs.symfony.com/download/php-cs-fixer-v3.phar -o php-cs-fixer.phar
-          chmod a+x ./php-cs-fixer.phar
+          curl -L https://cs.symfony.com/download/php-cs-fixer-v3.phar -o php-cs-fixer-v3.phar
+          chmod a+x ./php-cs-fixer-v3.phar
 
       - name: Run PHP CS Fixer check
-        run: ./php-cs-fixer.phar fix src --dry-run --diff
+        run: ./php-cs-fixer-v3.phar fix src --dry-run --diff
+
+      - name: Run yaml files checking
+        run: php bin/console lint:yaml config translations
+
+      - name: Run twig templates checking
+        run: php bin/console lint:twig templates
+
+      - name: Run phpstan analyse
+        run: php vendor/phpstan/phpstan/phpstan.phar analyse
