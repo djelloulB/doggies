@@ -6,7 +6,6 @@ jobs:
   container-job:
     runs-on: ubuntu-latest
     container: drakona/php:7.4-ci
-    needs: build
 
     services:
       db:
@@ -42,6 +41,7 @@ jobs:
   analysis:
     runs-on: ubuntu-latest
     container: drakona/php:7.4-ci
+
     steps:
       - uses: actions/checkout@v2
 
