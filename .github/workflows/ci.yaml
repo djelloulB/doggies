@@ -18,6 +18,7 @@ jobs:
           MYSQL_ROOT_PASSWORD: pass
           MYSQL_DATABASE: test
 
+
     steps:
       - uses: actions/checkout@v2
       - name: Set correct env file
