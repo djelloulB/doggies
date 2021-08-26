@@ -13,7 +13,7 @@ jobs:
 
         env:
           MYSQL_ROOT_PASSWORD: pass
-          MYSQL_DATABASE: test
+          MYSQL_DATABASE: doggies
 
     steps:
       - uses: actions/checkout@v2
