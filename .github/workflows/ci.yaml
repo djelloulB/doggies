@@ -9,15 +9,12 @@ jobs:
     needs: build
 
     services:
-
       db:
-
         image: mysql:5.7
 
         env:
           MYSQL_ROOT_PASSWORD: pass
           MYSQL_DATABASE: test
-
 
     steps:
       - uses: actions/checkout@v2
@@ -29,10 +26,12 @@ jobs:
 
       - name: Cache Composer packages
         run: cp .env.ci .env.local
-        uses: action/cache@v2 
-        key: ${{ runner.os}}-php${{ hashFiles('**/composer.lock')}}
-        restore-keys: |
-        ${{ runner.os }}-php-
+        uses: action/cache@v2
+        with:
+          path: vendor
+          key: ${{ runner.os}}-php${{ hashFiles('**/composer.lock')}}
+          restore-keys: |
+            ${{ runner.os }}-php-
 
       - name: Install dependencies
         run: composer install --prefer-dist --no-progress
@@ -42,7 +41,7 @@ jobs:
 
   analysis:
     runs-on: ubuntu-latest
-    container: drakona/php:7.4-ci    
+    container: drakona/php:7.4-ci
     steps:
       - uses: actions/checkout@v2
 
@@ -56,4 +55,3 @@ jobs:
 
       - name: Run PHP CS Fixer check
         run: ./php-cs-fixer.phar fix src --dry-run --diff
-
