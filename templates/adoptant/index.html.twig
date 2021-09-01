@@ -4,10 +4,18 @@
 
 <section class="py-5">
 	
-	<h3>Vos messages</h3>
+	<h3>Vos demandes d'adoption</h3>
   <ol class="list-group list-group-numbered py-2">
-        {% for message in messages %}
-            <li class="list-group-item">{{ message.text }}</li>
+        {% for demande in demandes %}
+		<li>
+				<h4>Annonce : {{demande.annonce.titre}}</h4>
+				<h5>Sujet : {{demande.sujet}} </h5>
+				<ul>
+					{% for message in demande.messages %}
+						<li class="list-group-item">Message : <br/>{{ message.text }}</li>
+					{% endfor %}
+				</ul>
+			</li>
         {% endfor %}
     </ol>
 </section>

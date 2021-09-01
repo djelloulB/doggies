@@ -23,14 +23,20 @@ class AdoptantController extends AbstractController
 {
     /**
      * @IsGranted("ROLE_ADOPTANT")
-     * @Route("/adoptant/{id}", name="adoptant")
+     * @Route("/adoptant", name="adoptant")
      */
-    public function index( $id, Annonce $annonce, DemandeAdoptionRepository $demandeAdoptionRepository, MessageRepository $messageRepository,AdoptantRepository $adoptantRepository): Response
+    public function index(DemandeAdoptionRepository $demandeAdoptionRepository): Response
     {
-        // $demandeExistante= $demandeAdoptionRepository->findByAdoptant($annonce,$this->getUser());
+        /** @var Adoptant $adoptant */
+        $adoptant = $this->getUser();
+        $demandes = $adoptant->getDemandeAdoption();
         
-       $messages =  $messageRepository->findAll();
-               //dd($demandeExistante);
+
+
+        // $demandeExistante= $demandeAdoptionRepository->findByAdoptant($annonce,$this->getUser());
+
+        //$messages =  $messageRepository->findAll();
+        //dd($demandeExistante);
         // je recupere l'adoptant en session
         //$adoptant = $this->getDoctrine()->getRepository(Adoptant::class)->findBy(["id"=> $id]);
         // foreach($adoptant as $a){
@@ -49,8 +55,9 @@ class AdoptantController extends AbstractController
         //  $userMessages = $demandeAdoptionRepository->findByMessages($demandeAdoption->id,$this->getUser());
         //$userMessages = findByUser()
         return $this->render('adoptant/index.html.twig', [
-            'messages' => $messages,
-            
+            //'messages' => $messages,
+            'demandes' => $demandes,
+
         ]);
     }
 
