@@ -27,37 +27,6 @@ class HomeController extends AbstractController
         $annonceurs = $annonceurRepository->findByDateMAJ();
     
 
-                // $dogs = [];
-        
-        // for($i= 0 ; $i <=5 ; $i++){
-
-        //     $dog = new Dog();
-        //     $dog->setNom('Arturo');
-        //     $dog->setIfLof(1);
-        //     $dog->setAntecedents('Arturo est un ancien chien de cirque. ');
-        //     $image = new Image();
-        //     $image->setUrlImage('img/Arturo/arthuro.jpg');
-        //     $dog->addImage($image);
-            
-        //     $dogs[] = $dog;
-        // }
-        // $Annonces = [];
-        // for($i= 0 ; $i <5 ; $i++){
-        //     $annonce = new Annonce();
-        //     $annonce->setTitre('Arturo');
-        //     $annonce->setDateMAJ(new \DateTime());
-        //     $annonce->addDog($dogs[$i]);
-        //     $Annonces[] = $annonce;
-        // }
-        // $Annonceurs = [];
-        // $annonceur = new Annonceur();
-        // $annonceur->setNom('Jean');
-        // $annonceur->setPrenom('Michel');
-        // $annonceur->setMotDePasse('123');
-        // $annonceur->setEmail('jm@fr.fr');
-        // $annonceur->setTelephone('0620103000');
-        // $Annonceurs[] = $annonceur;
-
         return $this->render('home/index.html.twig', [
             
             'annonces' => $annonces,
