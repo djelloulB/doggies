@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Annonceur;
 use App\Repository\AnnonceRepository;
+use App\Repository\AnnonceurRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -23,13 +24,9 @@ class AnnonceurController extends AbstractController
         $user = $this->getUser();
         $annonces = $user->getAnnonces();
 
-        // $annonces = $annonceRepository->findBy([
-        //     'annonceur' => $user,
-        // ]);
-
-        
         return $this->render('annonceur/index.html.twig', [
             'annonces' => $annonces,
         ]);
     }
+
 }

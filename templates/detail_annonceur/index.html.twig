@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello DetailAnnonceurController!{% endblock %}
+
+{% block body %}
+
+
+<div class="example-wrapper">
+    <div class="img-entete py-5">
+
+
+        <div class="row annonceur-detail">
+            <picture class="col-6">
+                <img class="img-fluid" src="{{ annonceur.image}}">
+            </picture>
+            <div class="description py-5 col-6">
+                <h2 >{{ annonceur.nom }}</h2>
+                <p>Notre refuge se trouve à {{ annonceur.ville }} dans le département du {{ annonceur.departement }}</p>
+                <p>Adresse complète : </p>
+                <p>{{ annonceur.residence }}</p>
+                <p>{{ annonceur.ville }}</p>
+
+
+                <p>Téléphone : {{ annonceur.telephone }} <br/>Email : {{ annonceur.email }}</p>
+            </div>
+        </div>
+        <div>
+            {% for annonce in annonceur.annonces %}
+                <h3>{{ annonce.titre }}</h3>
+                <img src="{{ annonce.image}}">
+                <p>{{ annonce.description }}</p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

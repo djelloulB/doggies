@@ -48,10 +48,15 @@
 					</div>
 
 					<div class="card-body">
-						<h4 class="card-title">{{ annonce.titre }}</h4>
-						<h5>Publié le:
+						<h4 class="card-title fw-bold text-center mb-4">{{ annonce.titre }}</h4>
+						<h5 class="mb-4">Publié le:
 							{{ annonce.dateMAJ|date('d/m/Y à H:i')}}</h5>
-						<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+						{% for dog in annonce.dogs %}
+							<hr>
+							<h6 class="fs-4">Description :</h6>
+							<p class="card-text">{{ dog.description | slice(0,200) }} ...</p>
+
+						{% endfor %}
 						<a href="{{ path('detailAnnonce', {id: annonce.id}) }}" class="btn btn-dark-green">Voir l'annonce</a>
 					</div>
 
@@ -65,16 +70,20 @@
 		<h2 class="text-center mb-5">Nos partenaires eleveurs et associations</h2>
 		<div class="row mx-auto justify-content-around">
 			{% for key, annonceur in annonceurs %}
-				<div class="col-3 p-0 ms-4 mb-2 card bg-dark text-white">
-					{% if annonceur.image %}
-						<img src="{{ asset(annonceur.image) }}" class="card-img" alt="...">
-					{% endif %}
-					<div class="card-img-overlay bg-overlay">
-						<h5 class="card-title">Annonceur :{{annonceur.categorie.designation}}</h5>
-						<p class="card-text">nombre d'annonce :
-							{{annonceur.annonces|length}}</p>
+
+					<div class="annonceurs col-3 p-0 ms-4 mb-2 card bg-dark text-white">
+				<a href="{{ path('detailAnnonceur', {id: annonceur.id}) }}">
+						{% if annonceur.image %}
+							<img src="{{ asset(annonceur.image) }}" class="card-img" alt="...">
+						{% endif %}
+						<div class="card-img-overlay bg-overlay">
+							<h4>{{ annonceur.nom }}</h4>
+							<h5 class="card-title">Annonceur :{{annonceur.categorie.designation}}</h5>
+							<p class="card-text">nombre d'annonce :
+								{{annonceur.annonces|length}}</p>
+						</div>
+				</a>
 					</div>
-				</div>
 			{% endfor %}
 		</div>
 	</section>

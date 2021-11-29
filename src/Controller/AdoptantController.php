@@ -32,30 +32,7 @@ class AdoptantController extends AbstractController
         $demandes = $adoptant->getDemandeAdoption();
         
 
-
-        // $demandeExistante= $demandeAdoptionRepository->findByAdoptant($annonce,$this->getUser());
-
-        //$messages =  $messageRepository->findAll();
-        //dd($demandeExistante);
-        // je recupere l'adoptant en session
-        //$adoptant = $this->getDoctrine()->getRepository(Adoptant::class)->findBy(["id"=> $id]);
-        // foreach($adoptant as $a){
-        //     $idAdoptant = $a->getId();
-        // }
-
-        //je recupere la demande d'adoption
-        //$demande = $adoptantRepository->findBydemande($adoptant);
-
-        
-            
-
-        //$x= $this->getDoctrine()->getRepository(DemandeAdoption::class)->findBy(["messages"=>$idAdoptant]);
-        //$userMessages =  $demandeAdoptionRepository->findDemandesByAnnonceAndAdoptant($id);
-        //dd($userMessages);
-        //  $userMessages = $demandeAdoptionRepository->findByMessages($demandeAdoption->id,$this->getUser());
-        //$userMessages = findByUser()
         return $this->render('adoptant/index.html.twig', [
-            //'messages' => $messages,
             'demandes' => $demandes,
 
         ]);
