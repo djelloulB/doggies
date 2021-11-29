@@ -68,8 +68,8 @@
 											<a href="{{path('adoptant_new')}}" class="p-0 mx-2 nav-link">
 												<i class="fas fa-user"></i><br><span class="link-span">S 'inscrire </span>
 											</a> 
-											<a href="{{path('app_login')}}" class="p-0 mx-2 nav-link"> 
-												<i class="fas fa-user"></i><br><span class="link-span">S 'identifier</span>
+											<a href="{{path('app_login')}}" class="p-0 mx-2 nav-link">
+												<i class="fas fa-sign-in-alt"></i><br><span class="link-span">S 'identifier</span>
 											</a>
 										</div>
 										{% else %}
@@ -92,5 +92,11 @@
 		{% endblock %}
 		<main class="container mx-auto"> {% block body %}{% endblock %}
 			</main>
+		<div id="footer" class="text-center py-5">
+			{% block footer %}
+				<p class="align-middle">&copy; Copyright 2021 Doggies</p>
+			{% endblock %}
+		</div>
 		</body>
+
 	</html>

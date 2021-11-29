@@ -7,11 +7,11 @@
 
 
 	<section class="py-5">
-		<h2 class="text-center mb-5">Titre de l'annonce</h2>
-		<p class="card-text">Nombre de chien :
+		<h2 class="text-center mb-5">{{ annonce.titre }}</h2>
+		<p class="card-text">Date de publication :
 		</p>
 		<p class="card-text">
-			<small class="text-muted">Last updated 3 mins ago</small>
+			<small class="text-muted">{{ annonce.dateMAJ|date('d/m/Y à H:i') }}</small>
 		</p>
 		<div class="row mx-auto">
 			<div class="card my-3 ">
